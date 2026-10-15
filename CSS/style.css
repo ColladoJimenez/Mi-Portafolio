@@ -1,0 +1,275 @@
+
+/* ===== HEADER: CONFIGURACIÓN GENERAL ===== */
+
+:root {
+    --header-width: 100%;
+    --header-bg: #050202;
+    --header-border: rgba(255, 255, 255, 0.16);
+    --header-red: #e11d2e;
+    --header-white: #ffffff;
+}
+
+.navbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 1000;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: clamp(18px, 2.5vw, 40px);
+
+    width: var(--header-width);
+    min-height: 85px;
+    padding: 14px clamp(24px, 4vw, 70px);
+    margin-inline: auto;
+
+    background: var(--header-bg);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.navbar::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--header-red),
+        transparent
+    );
+
+    pointer-events: none;
+}
+
+/* ===== NAVEGACIÓN ORBITRON ===== */
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(45px, 5vw, 75px);
+}
+
+.nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 0;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+
+    color: #ffffff;
+    transition: color 0.25s ease;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+    background: var(--header-red);
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #ffffff;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+}
+
+/* ===== BOTÓN CONTÁCTAME: MARCO BLANCO ===== */
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+
+    min-height: 46px;
+    padding: 0 18px;
+
+    background: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+
+    color: #ffffff;
+    font-family: "Orbitron", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.whatsapp-icon {
+    flex-shrink: 0;
+    color: currentColor;
+    transition: transform 0.25s ease;
+}
+
+/* Hover rojo */
+
+.contact-button:hover {
+    background: var(--header-red);
+    border-color: var(--header-red);
+    color: #ffffff;
+    box-shadow: 0 0 18px rgba(225, 29, 46, 0.3);
+}
+
+.contact-button:hover .whatsapp-icon {
+    transform: scale(1.1);
+}
+
+/* ===== LOGO ===== */
+
+.logo img {
+    display: block;
+    width: 210px;
+    max-height: 125px;
+    object-fit: contain;
+    object-position: left center;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1100px) {
+    .navbar {
+        grid-template-columns: auto 1fr auto;
+        gap: 16px;
+        padding-inline: 24px;
+    }
+
+    .menu-toggle {
+        display: block;
+        justify-self: end;
+    }
+
+    .contact-button {
+        justify-self: end;
+        padding-inline: 12px;
+    }
+
+    .navigation {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        padding: 12px 24px 22px;
+        background: rgba(9, 9, 9, 0.98);
+        border-bottom: 1px solid var(--header-red);
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-8px);
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    .navbar.menu-open .navigation {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .navigation .nav-link {
+        padding: 14px 4px;
+        font-size: 13px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        min-height: 72px;
+        padding: 12px 14px;
+        gap: 9px;
+    }
+
+    .logo img {
+        width: clamp(85px, 25vw, 115px);
+    }
+
+    .contact-button {
+        min-height: 38px;
+        padding: 0 9px;
+        gap: 6px;
+        font-size: 10px;
+    }
+
+    .whatsapp-icon {
+        width: 17px;
+        height: 17px;
+    }
+}
+
+.system-status {
+    display: none !important;
+}
+
+.navbar {
+    box-sizing: border-box;
+}
+
+.navbar > * {
+    min-width: 0;
+}
+
+.navbar > .logo {
+    grid-column: 1;
+}
+
+.navbar > .navigation {
+    grid-column: 2;
+}
+
+.navbar > .contact-button {
+    grid-column: 3;
+}
+
+
+/* Ocultar completamente el botón móvil en escritorio */
+@media (min-width: 1101px) {
+    .navbar > .menu-toggle {
+        display: none !important;
+    }
+}
