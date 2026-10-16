@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +11,11 @@
 
     <title>Mi Portafolio | Desarrollador Web</title>
 
-    <!-- Tipografía -->
+    <!-- Fuentes: Orbitron ExtraBold + Oxanium Medium -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Oxanium:wght@500&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Estilos principales -->
     <link rel="stylesheet" href="CSS/style.css">
@@ -22,6 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
 </head>
+
 
 <body>
 
@@ -99,179 +102,100 @@
 
     <main>
 
-        <!-- =========================
-             01. INICIO / HERO
-        ========================== -->
-        <section class="hero section" id="inicio">
 
-            <!-- Líneas decorativas laterales -->
-            <div class="hero-frame hero-frame-left" aria-hidden="true"></div>
-            <div class="hero-frame hero-frame-right" aria-hidden="true"></div>
-
+        <!-- ===== BANNER PRINCIPAL ===== -->
+        <section class="hero" id="inicio">
             <div class="hero-content">
 
-                <div class="section-tag hero-tag">
-                    <span class="tag-symbol">//</span>
-                    PORTAFOLIO PERSONAL
-                </div>
-
-                <p class="hero-subtitle">
-                    DESARROLLADOR WEB
-                    <span class="subtitle-line"></span>
-                </p>
-
                 <h1 class="hero-title">
-                    CREANDO<br>
-                    <span>EXPERIENCIAS</span><br>
-                    DIGITALES<span class="title-dot">.</span>
+                    <span class="hero-title-white">CONSTRUYENDO</span>
+                    <span class="hero-title-red">IDEAS DIGITALES</span>
                 </h1>
 
-                <p class="hero-description">
-                    Transformo ideas en experiencias digitales mediante
-                    código, creatividad y tecnología. Explora mis proyectos
-                    y conoce mi trabajo como desarrollador.
-                </p>
-
-                <div class="hero-actions">
-                    <a href="#proyectos" class="button button-primary">
-                        <span>EXPLORAR PROYECTOS</span>
-                        <span class="button-arrow" aria-hidden="true">↗</span>
-                    </a>
-
-                    <a href="#contacto" class="button button-secondary">
-                        CONTACTAR
-                    </a>
+                <div class="hero-description">
+                    <p>
+                        Desarrollador web con soluciones modernas, escalables
+                        y con un enfoque a la experiencia de usuario. Código, diseño y tecnología en completa evolución.
+                    </p>
                 </div>
 
-                <div class="hero-coordinates">
-                    <span>DESIGN</span>
-                    <span class="coordinate-separator">/</span>
-                    <span>DEVELOP</span>
-                    <span class="coordinate-separator">/</span>
-                    <span>INNOVATE</span>
-                </div>
+                <a href="#proyectos" class="hero-button">
+                    <span>VER PROYECTOS</span>
+                    <svg
+                        class="hero-button-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M7 17 17 7"/>
+                        <path d="M7 7h10v10"/>
+                    </svg>
+                </a>
 
             </div>
-
-
-            <!-- Panel HUD lateral -->
-            <aside class="hero-hud" aria-label="Interfaz gráfica decorativa">
-
-                <div class="hud-top-label">
-                    <span class="hud-dot"></span>
-                    VISUAL INTERFACE
-                </div>
-
-                <!-- Emblema geométrico decorativo -->
-                <div class="hud-emblem" aria-hidden="true">
-                    <div class="hud-ring hud-ring-outer"></div>
-                    <div class="hud-ring hud-ring-middle"></div>
-                    <div class="hud-ring hud-ring-inner"></div>
-
-                    <div class="hud-cross hud-cross-horizontal"></div>
-                    <div class="hud-cross hud-cross-vertical"></div>
-
-                    <div class="hud-core">
-                        <span>DX</span>
-                    </div>
-
-                    <div class="hud-orbit hud-orbit-one"></div>
-                    <div class="hud-orbit hud-orbit-two"></div>
-                </div>
-
-                <div class="hud-readout">
-                    <div class="hud-readout-heading">
-                        <span>CORE SYSTEM</span>
-                        <span>01</span>
-                    </div>
-
-                    <div class="hud-meter">
-                        <span></span>
-                    </div>
-
-                    <div class="hud-readout-heading">
-                        <span>INTERFACE</span>
-                        <span>ACTIVE</span>
-                    </div>
-
-                    <div class="hud-meter hud-meter-short">
-                        <span></span>
-                    </div>
-                </div>
-
-                <div class="hud-corner hud-corner-top"></div>
-                <div class="hud-corner hud-corner-bottom"></div>
-
-            </aside>
-
-
-            <!-- Indicador inferior -->
-            <a href="#sobre-mi" class="scroll-indicator">
-                <span class="scroll-line"></span>
-                <span>SCROLL TO EXPLORE</span>
-                <span class="scroll-symbol">↓</span>
-            </a>
-
-            <div class="hero-index" aria-hidden="true">
-                <span>01</span>
-                <span class="index-line"></span>
-                <span>06</span>
-            </div>
-
         </section>
 
 
-        <!-- =========================
-             02. SOBRE MÍ
-        ========================== -->
-        <section class="section about-section" id="sobre-mi">
+        <!-- =========================================
+            SOBRE MÍ - DESTROYER PRIME CODEFORGE
+        ========================================= -->
 
-            <div class="section-heading">
-                <span class="section-number">01 / ABOUT</span>
-                <h2>SOBRE <span>MÍ.</span></h2>
-                <p>Conoce al desarrollador detrás del código.</p>
-            </div>
+        <section class="about" id="sobre-mi">
 
-            <div class="about-layout">
+            <div class="about-content">
 
+                <!-- COLUMNA IZQUIERDA: TEXTO -->
                 <div class="about-text">
-                    <span class="section-tag">// IDENTIFICACIÓN</span>
 
-                    <h3>HOLA, SOY <span>[TU NOMBRE]</span></h3>
+                    <span class="about-label">SOBRE MÍ</span>
 
-                    <p>
-                        Soy desarrollador web y me apasiona crear experiencias
-                        digitales funcionales, modernas y visualmente atractivas.
+                    <h2 class="about-title">
+                        <span class="about-title-white">HOLA, SOY</span>
+                        <span class="about-title-red">DESTROYER PRIME</span>
+                    </h2>
+
+                    <p class="about-description">
+                        Soy un desarrollador apasionado por la tecnología,
+                        los videojuegos y la creación de experiencias digitales.
+                        Me enfoco en construir sitios web modernos, funcionales
+                        y visualmente atractivos, siempre buscando mejorar y
+                        aprender algo nuevo.
                     </p>
 
-                    <p>
-                        Me interesa combinar tecnología, diseño y creatividad
-                        para desarrollar soluciones que destaquen tanto por su
-                        funcionamiento como por su presentación.
-                    </p>
-
-                    <a href="#contacto" class="text-link">
-                        CONECTEMOS <span>↗</span>
-                    </a>
                 </div>
 
-                <div class="about-visual" aria-hidden="true">
-                    <div class="about-visual-grid"></div>
-                    <div class="about-visual-circle"></div>
-                    <div class="about-visual-cross">+</div>
+                <!-- COLUMNA DERECHA: REACTOR CON LOGO -->
+                <div class="about-visual">
 
-                    <span class="visual-label visual-label-top">
-                        DEVELOPER PROFILE
-                    </span>
+                    <div class="reactor">
 
-                    <span class="visual-label visual-label-bottom">
-                        PROFILE_001 // ACTIVE
-                    </span>
+                        <div class="reactor-ring reactor-ring-outer"></div>
+                        <div class="reactor-ring reactor-ring-middle"></div>
+                        <div class="reactor-ring reactor-ring-inner"></div>
+
+                        <div class="reactor-core">
+                            <img
+                                src="Assets/LOGO%20MAX%20ULTIMATE.svg"
+                                alt="Logo de Destroyer Prime Codeforge"
+                                class="reactor-logo"
+                            >
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
 
         </section>
+
 
 
         <!-- =========================

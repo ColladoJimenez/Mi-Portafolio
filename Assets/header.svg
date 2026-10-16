@@ -1,0 +1,28 @@
+<svg width="1240" height="176" viewBox="0 0 1240 176" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_82_295)">
+<g clip-path="url(#clip1_82_295)">
+<path d="M0 0H1240V110H1220L1202 128H1192L1174 146H774L748 160H646L620 172L594 160H492L466 146H66L48 128H38L20 110H0V0Z" fill="#050202"/>
+<path d="M1 110H20L38 128H48L66 146H466L492 160H594L620 172L646 160H748L774 146H1174L1192 128H1202L1220 110H1239" stroke-width="8" stroke="#FF0000" stroke-opacity="0.1"/>
+<path d="M1 110H20L38 128H48L66 146H466L492 160H594L620 172L646 160H748L774 146H1174L1192 128H1202L1220 110H1239" stroke-width="4" stroke="#FF0000" stroke-opacity="0.18"/>
+<path d="M1 110H20L38 128H48L66 146H466L492 160H594L620 172L646 160H748L774 146H1174L1192 128H1202L1220 110H1239" stroke-width="3" stroke="#FF0000"/>
+<path d="M594 160L620 172L646 160" stroke-width="3" stroke="#FF0000"/>
+<path d="M194 16H448L458 22H782L792 16H1046" stroke="white" stroke-opacity="0.13"/>
+<path d="M194 16H234M1006 16H1046" stroke-width="1.5" stroke="#FF0000" stroke-opacity="0.8"/>
+<path d="M86 138H454L482 152H576M664 152H758L786 138H1154" stroke="#FF0000" stroke-opacity="0.22"/>
+<path d="M18 78H27L34 85M18 86H31L38 93M18 94H35L42 101M1206 85L1213 78H1222M1202 93L1209 86H1222M1198 101L1205 94H1222" stroke-width="1.3" stroke="#FF0000"/>
+<path d="M206 128H226M230 128H238M1002 128H1010M1014 128H1034" stroke-width="2" stroke="#FF0000"/>
+<path d="M601 148L620 157L639 148" stroke="#FF0000" stroke-opacity="0.65"/>
+<path d="M247 127H435M805 127H993" stroke="white" stroke-opacity="0.1"/>
+<path d="M617 142L620 139L623 142L620 145L617 142Z" fill="#FF0000"/>
+<path opacity="0.7" d="M187 14H190V18H187V14ZM1050 14H1053V18H1050V14Z" fill="#FF0000"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_82_295">
+<rect width="1240" height="176" fill="white"/>
+</clipPath>
+<clipPath id="clip1_82_295">
+<rect width="1240" height="176" fill="white"/>
+</clipPath>
+</defs>
+</svg>

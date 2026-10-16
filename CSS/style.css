@@ -5,48 +5,66 @@
     --header-width: 100%;
     --header-bg: #050202;
     --header-border: rgba(255, 255, 255, 0.16);
-    --header-red: #e11d2e;
+    --header-red: #ff0000;
     --header-white: #ffffff;
 }
 
+
+/* ===== ELIMINAR MÁRGENES DEL NAVEGADOR ===== */
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ===== BANNER A PANTALLA COMPLETA ===== */
+.hero {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+
+/* ===== HEADER FUTURISTA CON SVG ===== */
+
+/* ===== HEADER FUTURISTA CON SVG DE FONDO ===== */
+
 .navbar {
     position: fixed;
-    inset: 0 0 auto 0;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
+
+    width: 100%;
+    max-width: none;
+    min-height: 235px;
+    box-sizing: border-box;
+    margin: 0;
 
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: clamp(18px, 2.5vw, 40px);
 
-    width: var(--header-width);
-    min-height: 85px;
-    padding: 14px clamp(24px, 4vw, 70px);
-    margin-inline: auto;
+    padding: 15px clamp(70px, 6vw, 150px) 90px;
 
-    background: var(--header-bg);
-
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    /* SVG transparente como fondo */
+    background-color: transparent;
+    background-image: url("../Assets/cyber-header.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 150%;
 }
 
-.navbar::after {
-    content: "";
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 1px;
 
-    background: linear-gradient(
-        90deg,
-        transparent,
-        var(--header-red),
-        transparent
-    );
 
-    pointer-events: none;
-}
 
 /* ===== NAVEGACIÓN ORBITRON ===== */
 
@@ -75,13 +93,16 @@
     transition: color 0.25s ease;
 }
 
-
-/* Enlaces de navegación */
+/* =========================================
+   ENLACES DE NAVEGACIÓN
+========================================= */
 .nav-link {
     position: relative;
     display: inline-flex;
     align-items: center;
-    padding: 10px 0;
+    justify-content: center;
+
+    padding: 10px 12px;
 
     font-family: "Orbitron", sans-serif;
     font-size: 15px;
@@ -92,44 +113,116 @@
     white-space: nowrap;
 
     color: #ffffff;
-
     transform: scale(1);
     transform-origin: center;
+
     transition:
-        color 0.25s ease,
-        transform 0.25s ease;
+        color 0.4s ease,
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        text-shadow 0.4s ease;
 }
 
-/* Hover: rojo y 15 % más grande */
+/* =========================================
+   HOVER: TEXTO ROJO, AGRANDADO Y NEÓN
+========================================= */
 .nav-link:hover {
-    color: #e11d2e;
+    color: #ff0000;
     transform: scale(1.15);
+
+    text-shadow:
+        0 0 5px rgba(255, 16, 40, 1),
+        0 0 12px rgba(255, 16, 40, 0.9),
+        0 0 22px rgba(255, 16, 40, 0.65);
 }
 
-/* Enlace de la sección activa */
+/* =========================================
+   LÍNEA ROJA INFERIOR
+========================================= */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 2px;
+
+    height: 2px;
+    background: #ff1028;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    opacity: 0;
+
+    box-shadow:
+        0 0 5px rgba(255, 16, 40, 0.9),
+        0 0 12px rgba(255, 16, 40, 0.5);
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(#ff1028, #ff1028) left top / 10px 2px no-repeat,
+        linear-gradient(#ff1028, #ff1028) left top / 2px 10px no-repeat,
+
+        linear-gradient(#ff1028, #ff1028) right top / 10px 2px no-repeat,
+        linear-gradient(#ff1028, #ff1028) right top / 2px 10px no-repeat,
+
+        linear-gradient(#ff1028, #ff1028) left bottom / 10px 2px no-repeat,
+        linear-gradient(#ff1028, #ff1028) left bottom / 2px 10px no-repeat,
+
+        linear-gradient(#ff1028, #ff1028) right bottom / 10px 2px no-repeat,
+        linear-gradient(#ff1028, #ff1028) right bottom / 2px 10px no-repeat;
+
+    opacity: 0;
+    transform: scale(0.92);
+
+    filter: drop-shadow(0 0 4px rgba(255, 16, 40, 0.9));
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+    pointer-events: none;
+}
+
+.nav-link:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* HOVER: LA LÍNEA APARECE E ILUMINA */
+.nav-link:hover::after {
+    transform: scaleX(0);
+    opacity: 0;
+}
+
+/* =========================================
+   ENLACE ACTIVO
+========================================= */
 .nav-link.active {
     color: #ffffff;
 }
 
-/* Línea roja inferior */
-.nav-link::after {
-    content: "";
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-
-    width: 100%;
-    height: 2px;
-    background: #e11d2e;
-
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.25s ease;
-}
-
-.nav-link:hover::after,
 .nav-link.active::after {
     transform: scaleX(1);
+    opacity: 1;
+}
+
+.nav-link.active:hover {
+    color: #ff1028;
+}
+
+.nav-link.active:hover::before {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* ===== BOTÓN CONTÁCTAME: MARCO BLANCO ===== */
@@ -303,5 +396,446 @@
 @media (min-width: 1101px) {
     .navbar > .menu-toggle {
         display: none !important;
+    }
+}
+
+
+
+/* =========================================
+   BANNER PRINCIPAL - DESTROYER PRIME CODEFORGE
+========================================= */
+
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+    padding:
+        160px
+        clamp(40px, 8vw, 120px)
+        80px;
+
+    background: #050202;
+    color: #ffffff;
+
+    /* Permite colocar la imagen detrás del contenido */
+    isolation: isolate;
+}
+
+/* IMAGEN DE FONDO + DEGRADADO NEGRO */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 2, 2, 0.90) 0%,
+            rgba(5, 2, 2, 0.80) 45%,
+            rgba(5, 2, 2, 0.55) 100%
+        ),
+        url("../Assets/banner-iron-man.svg");
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    pointer-events: none;
+}
+
+/* CONTENIDO */
+.hero-content {
+    width: 100%;
+    max-width: 850px;
+}
+
+/* TITULAR */
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin: 0 0 100px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 55px;
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -1px;
+}
+
+/* PRIMERA LÍNEA */
+.hero-title-white {
+    color: #ffffff;
+}
+
+/* SEGUNDA LÍNEA */
+.hero-title-red {
+    color: #ff0000;
+}
+
+/* DESCRIPCIÓN */
+.hero-description {
+    max-width: 550px;
+    margin-bottom: 25px;
+
+    font-family: "Oxanium", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.9;
+    letter-spacing: 0.4px;
+    color: #d0d0d0;
+}
+
+.hero-description p {
+    margin: 0;
+}
+
+/* ===== BOTÓN VER PROYECTOS ===== */
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+
+    min-height: 46px;
+    padding: 0 18px;
+
+    background: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+
+    color: #ffffff;
+    font-family: "Orbitron", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Flecha diagonal */
+.hero-button-icon {
+    flex-shrink: 0;
+    color: currentColor;
+    transition: transform 0.25s ease;
+}
+
+/* Hover rojo, igual que CONTÁCTAME */
+.hero-button:hover {
+    background: var(--header-red);
+    border-color: var(--header-red);
+    color: #ffffff;
+    box-shadow: 0 0 18px rgba(225, 29, 46, 0.3);
+}
+
+/* Animación de la flecha */
+.hero-button:hover .hero-button-icon {
+    transform: translate(2px, -2px);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 90vh;
+        padding: 150px 28px 70px;
+    }
+
+    .hero-title {
+        font-size: clamp(32px, 7vw, 48px);
+        letter-spacing: -0.5px;
+    }
+
+    .hero-description {
+        max-width: 100%;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero {
+        padding-inline: 20px;
+    }
+
+    .hero-title {
+        font-size: clamp(27px, 7.5vw, 34px);
+    }
+}
+
+
+/* =========================================
+   SOBRE MÍ - ESTILO GENERAL
+========================================= */
+
+.about {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 100px clamp(40px, 8vw, 120px);
+
+    background: #050202;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.about-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 60px;
+}
+
+/* =========================================
+   COLUMNA IZQUIERDA: TEXTO
+========================================= */
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* ETIQUETA SOBRE MÍ */
+
+.about-label {
+    position: relative;
+    margin-bottom: 24px;
+    padding-left: 15px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    color: #ff1028;
+}
+
+.about-label::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: #ff1028;
+    box-shadow: 0 0 10px rgba(255, 16, 40, 0.8);
+}
+
+/* TÍTULO */
+
+.about-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 8px;
+    margin: 0 0 24px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(32px, 3.8vw, 55px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+
+.about-title-white {
+    color: #ffffff;
+}
+
+.about-title-red {
+    color: #ff1028;
+    text-shadow: 0 0 18px rgba(255, 16, 40, 0.12);
+}
+
+/* DESCRIPCIÓN: OXANIUM DE 12 PX */
+
+.about-description {
+    max-width: 550px;
+    margin: 0;
+
+    font-family: "Oxanium", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.9;
+    letter-spacing: 0.4px;
+
+    color: #d0d0d0;
+}
+
+/* =========================================
+   COLUMNA DERECHA: REACTOR
+========================================= */
+
+.about-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    padding: 25px;
+}
+
+.reactor {
+    position: relative;
+
+    width: min(100%, 340px);
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    isolation: isolate;
+}
+
+/* ANILLOS TECNOLÓGICOS */
+
+.reactor-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+/* CÍRCULO EXTERIOR */
+.reactor-ring-outer {
+    inset: -45px; /* Agranda el círculo exterior */
+
+    border: 2px solid rgba(255, 16, 40, 0.85);
+
+    box-shadow:
+        0 0 12px rgba(255, 16, 40, 0.25),
+        inset 0 0 12px rgba(255, 16, 40, 0.08);
+}
+
+/* CÍRCULO INTERMEDIO */
+.reactor-ring-middle {
+    inset: -35px; /* Menor valor = círculo más grande */
+
+    border: 1px solid rgba(255, 255, 255, 0.65);
+
+    outline: 1px dashed rgba(255, 16, 40, 0.75);
+    outline-offset: 12px; /* Separa el contorno discontinuo */
+
+    box-shadow: 0 0 15px rgba(255, 16, 40, 0.12);
+}
+
+/* CÍRCULO INTERIOR */
+.reactor-ring-inner {
+    inset: -20x; /* Mayor valor = círculo más pequeño */
+
+    border: 2px solid rgba(255, 16, 40, 0.9);
+
+    box-shadow:
+        0 0 18px rgba(255, 16, 40, 0.25),
+        inset 0 0 18px rgba(255, 16, 40, 0.12);
+}
+
+
+/* CENTRO DEL REACTOR */
+
+.reactor-core {
+    position: relative;
+    z-index: 2;
+
+    width: 68%;
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    border: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 16, 40, 0.12) 0%,
+            rgba(5, 2, 2, 0.96) 72%
+        );
+
+    box-shadow:
+        0 0 25px rgba(255, 16, 40, 0.18),
+        inset 0 0 25px rgba(255, 16, 40, 0.12);
+}
+
+/* TU LOGO */
+
+
+.reactor-logo {
+    position: relative;
+    z-index: 3;
+
+    display: block;
+    width: 150%;
+    height: 150%;
+    object-fit: cover;
+    border-radius: 50%;
+    clip-path: circle(50%);
+
+    filter: drop-shadow(0 0 8px rgba(255, 16, 40, 0.5));
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+    .about {
+        padding: 80px 28px;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .about-title {
+        font-size: clamp(30px, 7vw, 44px);
+    }
+
+    .about-visual {
+        padding: 15px;
+    }
+
+    .reactor {
+        width: min(75vw, 400px);
+    }
+}
+
+@media (max-width: 420px) {
+    .about {
+        padding-inline: 20px;
+    }
+
+    .about-title {
+        font-size: 29px;
+        letter-spacing: -0.6px;
     }
 }
