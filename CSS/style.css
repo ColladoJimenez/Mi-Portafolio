@@ -284,116 +284,69 @@ body {
     object-position: left center;
 }
 
-/* ===== RESPONSIVE ===== */
+/* =========================================
+   NAVBAR RESPONSIVE — DESKTOP
+========================================= */
 
-@media (max-width: 1100px) {
+@media (min-width: 1000px) {
     .navbar {
-        grid-template-columns: auto 1fr auto;
-        gap: 16px;
-        padding-inline: 24px;
+        min-height: clamp(120px, 10vw, 175px);
+
+        /* Ajuste vertical */
+        padding: 40px clamp(80px, 5vw, 150px) 30px;
+
+        gap: clamp(10px, 2vw, 25px);
+
+        background-size: 100% 150%;
     }
 
-    .menu-toggle {
-        display: block;
-        justify-self: end;
-    }
-
-    .contact-button {
-        justify-self: end;
-        padding-inline: 12px;
-    }
-
-    .navigation {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-
-        padding: 12px 24px 22px;
-        background: rgba(9, 9, 9, 0.98);
-        border-bottom: 1px solid var(--header-red);
-
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transform: translateY(-8px);
-
-        transition:
-            opacity 0.25s ease,
-            visibility 0.25s ease,
-            transform 0.25s ease;
-    }
-
-    .navbar.menu-open .navigation {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        transform: translateY(0);
-    }
-
-    .navigation .nav-link {
-        padding: 14px 4px;
-        font-size: 13px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-}
-
-@media (max-width: 480px) {
-    .navbar {
-        min-height: 72px;
-        padding: 12px 14px;
-        gap: 9px;
-    }
-
+    /* LOGO ADAPTABLE */
     .logo img {
-        width: clamp(85px, 25vw, 115px);
+        width: clamp(135px, 14vw, 190px);
+        max-height: 95px;
     }
 
+    /* ESPACIO ENTRE LOS ENLACES */
+    .navigation {
+        gap: clamp(18px, 3vw, 50px);
+    }
+
+    /* TEXTO DEL MENÚ */
+    .nav-link {
+        font-size: clamp(11px, 1vw, 14px);
+        padding: 8px clamp(4px, 0.7vw, 10px);
+    }
+
+    /* BOTÓN CONTACTAR */
     .contact-button {
-        min-height: 38px;
-        padding: 0 9px;
-        gap: 6px;
-        font-size: 10px;
+        min-height: clamp(38px, 3.2vw, 44px);
+        padding-inline: clamp(10px, 1.2vw, 16px);
+        gap: 8px;
+        font-size: clamp(10px, 0.85vw, 12px);
     }
 
-    .whatsapp-icon {
-        width: 17px;
-        height: 17px;
+    .navbar > .logo,
+    .navbar > .navigation,
+    .navbar > .contact-button {
+        transform: translateY(-35px);
+    }
+
+}
+
+/* =========================================
+TABLETS Y PANTALLAS PEQUEÑAS
+========================================= */
+
+@media (max-width: 420) {
+    .navbar {
+        min-height: 80px;
+        padding: 10px 24px;
+        background-size: 100% 100%;
     }
 }
-
-.system-status {
-    display: none !important;
-}
-
-.navbar {
-    box-sizing: border-box;
-}
-
-.navbar > * {
-    min-width: 0;
-}
-
-.navbar > .logo {
-    grid-column: 1;
-}
-
-.navbar > .navigation {
-    grid-column: 2;
-}
-
-.navbar > .contact-button {
-    grid-column: 3;
-}
-
 
 /* Ocultar completamente el botón móvil en escritorio */
-@media (min-width: 1101px) {
+@media (min-width: 900px) {
     .navbar > .menu-toggle {
         display: none !important;
     }
@@ -550,7 +503,7 @@ body {
    RESPONSIVE
 ========================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .hero {
         min-height: 90vh;
         padding: 150px 28px 70px;
@@ -586,7 +539,7 @@ body {
     position: relative;
     width: 100%;
     box-sizing: border-box;
-    padding: 100px clamp(40px, 8vw, 120px);
+    padding: 150px clamp(40px, 8vw, 120px);
 
     background: #050202;
     color: #ffffff;
@@ -650,11 +603,11 @@ body {
     flex-direction: column;
     align-items: flex-start;
 
-    gap: 8px;
+    gap: 10px;
     margin: 0 0 24px;
 
     font-family: "Orbitron", sans-serif;
-    font-size: clamp(32px, 3.8vw, 55px);
+    font-size: clamp(32px, 3.8vw, 30px);
     font-weight: 800;
     line-height: 1.15;
     letter-spacing: -1px;
@@ -723,7 +676,7 @@ body {
 
 /* CÍRCULO EXTERIOR */
 .reactor-ring-outer {
-    inset: -45px; /* Agranda el círculo exterior */
+    inset: -10px; /* Agranda el círculo exterior */
 
     border: 2px solid rgba(255, 16, 40, 0.85);
 
@@ -734,27 +687,42 @@ body {
 
 /* CÍRCULO INTERMEDIO */
 .reactor-ring-middle {
-    inset: -35px; /* Menor valor = círculo más grande */
+    inset: -5px; /* Menor valor = círculo más grande */
 
-    border: 1px solid rgba(255, 255, 255, 0.65);
+    border: 1px dashed rgba(255, 255, 255, 0.65);
 
-    outline: 1px dashed rgba(255, 16, 40, 0.75);
-    outline-offset: 12px; /* Separa el contorno discontinuo */
+    outline: 2px dashed rgba(255, 16, 40, 0.75);
+    outline-offset: 10px; /* Separa el contorno discontinuo */
 
     box-shadow: 0 0 15px rgba(255, 16, 40, 0.12);
 }
 
 /* CÍRCULO INTERIOR */
 .reactor-ring-inner {
-    inset: -20x; /* Mayor valor = círculo más pequeño */
+    inset: 10px;
+    border-radius: 50%;
 
-    border: 2px solid rgba(255, 16, 40, 0.9);
+    background: repeating-conic-gradient(
+        from 0deg,
+        rgba(255, 16, 40, 0.95) 0deg 20deg,
+        transparent 20deg 32deg
+    );
+
+    -webkit-mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 2px),
+        #000 calc(100% - 1px)
+    );
+
+    mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 2px),
+        #000 calc(100% - 1px)
+    );
 
     box-shadow:
-        0 0 18px rgba(255, 16, 40, 0.25),
-        inset 0 0 18px rgba(255, 16, 40, 0.12);
+        0 0 10px rgba(255, 16, 40, 0.25);
 }
-
 
 /* CENTRO DEL REACTOR */
 
@@ -762,7 +730,7 @@ body {
     position: relative;
     z-index: 2;
 
-    width: 68%;
+    width: 50%;
     aspect-ratio: 1 / 1;
 
     display: flex;
@@ -784,8 +752,9 @@ body {
         inset 0 0 25px rgba(255, 16, 40, 0.12);
 }
 
-/* TU LOGO */
-
+/* =========================================
+   LOGO DEL REACTOR: NEÓN ROJO INTENSO
+========================================= */
 
 .reactor-logo {
     position: relative;
@@ -795,10 +764,90 @@ body {
     width: 150%;
     height: 150%;
     object-fit: cover;
-    border-radius: 50%;
-    clip-path: circle(50%);
 
-    filter: drop-shadow(0 0 8px rgba(255, 16, 40, 0.5));
+    border-radius: 50%;
+    border: 1px solid #ff0000;
+
+    /* Pulso de luz roja */
+    animation: reactor-pulse 1.5s ease-in-out infinite;
+}
+
+/* =========================================
+   ANIMACIÓN DE ILUMINACIÓN
+========================================= */
+
+@keyframes reactor-pulse {
+    0%, 100% {
+        border-color: rgba(255, 0, 0, 0.65);
+        box-shadow:
+            0 0 2px #ff0000,
+            0 0 5px rgba(255, 0, 0, 0.65),
+            0 0 10px rgba(255, 0, 0, 0.4);
+    }
+
+    50% {
+        border-color: #ff0000;
+        box-shadow:
+            0 0 5px #ff0000,
+            0 0 10px #ff0000,
+            0 0 15px #ff0000,
+            0 0 20px rgba(255, 0, 0, 0.9),
+            0 0 25px rgba(255, 0, 0, 0.65);
+    }
+}
+
+/* =========================================
+   HOVER FUTURISTA: REACTOR
+========================================= */
+
+/* Transiciones del logo y los aros */
+.reactor-logo {
+    transition: transform 0.4s ease;
+    transform-origin: center;
+}
+
+.reactor-ring {
+    transition: transform 0.6s ease;
+    transform-origin: center;
+}
+
+/* El logo aumenta un 15% */
+.reactor:hover .reactor-logo {
+    animation: none;
+    transform: scale(1.15);
+
+    filter:
+        drop-shadow(0 0 5px #ff0000)
+        drop-shadow(0 0 10px rgba(255, 0, 0, 0.8))
+        drop-shadow(0 0 15px rgba(255, 0, 0, 0.5));
+}
+
+
+/* Los aros aumentan un 15% y giran */
+.reactor:hover .reactor-ring-outer {
+    transform: scale(1.15);
+    animation: reactor-spin 15s linear infinite;
+}
+
+.reactor:hover .reactor-ring-middle {
+    transform: scale(1.15);
+    animation: reactor-spin 10s linear infinite reverse;
+}
+
+.reactor:hover .reactor-ring-inner {
+    transform: scale(1.15);
+    animation: reactor-spin 5s linear infinite;
+}
+
+/* Rotación continua */
+@keyframes reactor-spin {
+    from {
+        rotate: 0deg;
+    }
+
+    to {
+        rotate: 360deg;
+    }
 }
 
 
@@ -806,9 +855,10 @@ body {
    RESPONSIVE
 ========================================= */
 
-@media (max-width: 768px) {
+
+@media (max-width: 900px) {
     .about {
-        padding: 80px 28px;
+        padding: 110px 28px;
     }
 
     .about-content {
@@ -821,13 +871,35 @@ body {
     }
 
     .about-visual {
-        padding: 15px;
+        padding: 10px;
     }
 
+    /* TAMAÑO DEL REACTOR */
     .reactor {
-        width: min(75vw, 400px);
+        width: min(60vw, 300px);
+    }
+
+    /* TAMAÑO DE LOS AROS CIBERNÉTICOS */
+    .reactor-ring-outer {
+        inset: -30px;
+    }
+
+    .reactor-ring-middle {
+        inset: -23px;
+        outline-offset: 8px;
+    }
+
+    .reactor-ring-inner {
+        inset: -12px;
+    }
+
+    /* TAMAÑO DEL LOGO */
+    .reactor-logo {
+        width: 125%;
+        height: 125%;
     }
 }
+
 
 @media (max-width: 420px) {
     .about {
@@ -840,53 +912,4 @@ body {
     }
 }
 
-/* =========================================
-   NAVBAR RESPONSIVE — DESKTOP
-========================================= */
 
-@media (min-width: 1000px) {
-    .navbar {
-        min-height: clamp(125px, 13vw, 190px);
-        padding: 12px clamp(20px, 5vw, 60px) 55px;
-        gap: clamp(10px, 2vw, 25px);
-
-        background-size: 100% 100%;
-    }
-
-    /* LOGO ADAPTABLE */
-    .logo img {
-        width: clamp(135px, 14vw, 190px);
-        max-height: 110px;
-    }
-
-    /* ESPACIO ENTRE LOS ENLACES */
-    .navigation {
-        gap: clamp(18px, 3vw, 50px);
-    }
-
-    /* TEXTO DEL MENÚ */
-    .nav-link {
-        font-size: clamp(11px, 1vw, 14px);
-        padding: 8px clamp(4px, 0.7vw, 10px);
-    }
-
-    /* BOTÓN CONTACTAR */
-    .contact-button {
-        min-height: clamp(38px, 3.2vw, 44px);
-        padding-inline: clamp(10px, 1.2vw, 16px);
-        gap: 8px;
-        font-size: clamp(10px, 0.85vw, 12px);
-    }
-}
-
-/* =========================================
-TABLETS Y PANTALLAS PEQUEÑAS
-========================================= */
-
-@media (max-width: 900px) {
-    .navbar {
-        min-height: 80px;
-        padding: 10px 24px;
-        background-size: 100% 100%;
-    }
-}
