@@ -839,3 +839,54 @@ body {
         letter-spacing: -0.6px;
     }
 }
+
+/* =========================================
+   NAVBAR RESPONSIVE — DESKTOP
+========================================= */
+
+@media (min-width: 1000px) {
+    .navbar {
+        min-height: clamp(125px, 13vw, 190px);
+        padding: 12px clamp(20px, 5vw, 60px) 55px;
+        gap: clamp(10px, 2vw, 25px);
+
+        background-size: 100% 100%;
+    }
+
+    /* LOGO ADAPTABLE */
+    .logo img {
+        width: clamp(135px, 14vw, 190px);
+        max-height: 110px;
+    }
+
+    /* ESPACIO ENTRE LOS ENLACES */
+    .navigation {
+        gap: clamp(18px, 3vw, 50px);
+    }
+
+    /* TEXTO DEL MENÚ */
+    .nav-link {
+        font-size: clamp(11px, 1vw, 14px);
+        padding: 8px clamp(4px, 0.7vw, 10px);
+    }
+
+    /* BOTÓN CONTACTAR */
+    .contact-button {
+        min-height: clamp(38px, 3.2vw, 44px);
+        padding-inline: clamp(10px, 1.2vw, 16px);
+        gap: 8px;
+        font-size: clamp(10px, 0.85vw, 12px);
+    }
+}
+
+/* =========================================
+TABLETS Y PANTALLAS PEQUEÑAS
+========================================= */
+
+@media (max-width: 900px) {
+    .navbar {
+        min-height: 80px;
+        padding: 10px 24px;
+        background-size: 100% 100%;
+    }
+}
