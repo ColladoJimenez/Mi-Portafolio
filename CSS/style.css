@@ -539,7 +539,7 @@ TABLETS Y PANTALLAS PEQUEÑAS
     position: relative;
     width: 100%;
     box-sizing: border-box;
-    padding: 150px clamp(40px, 8vw, 120px);
+    padding: 150px clamp(40px, 8vw, 120px) 30px;
 
     background: #050202;
     color: #ffffff;
@@ -580,7 +580,7 @@ TABLETS Y PANTALLAS PEQUEÑAS
     font-weight: 700;
     letter-spacing: 2px;
 
-    color: #ff1028;
+    color: #ff0000;
 }
 
 .about-label::before {
@@ -592,7 +592,7 @@ TABLETS Y PANTALLAS PEQUEÑAS
     width: 3px;
     height: 100%;
 
-    background: #ff1028;
+    background: #ff0000;
     box-shadow: 0 0 10px rgba(255, 16, 40, 0.8);
 }
 
@@ -618,7 +618,7 @@ TABLETS Y PANTALLAS PEQUEÑAS
 }
 
 .about-title-red {
-    color: #ff1028;
+    color: #ff0000;
     text-shadow: 0 0 18px rgba(255, 16, 40, 0.12);
 }
 
@@ -634,7 +634,7 @@ TABLETS Y PANTALLAS PEQUEÑAS
     line-height: 1.9;
     letter-spacing: 0.4px;
 
-    color: #d0d0d0;
+    color: #ffffff;
 }
 
 /* =========================================
@@ -909,6 +909,281 @@ TABLETS Y PANTALLAS PEQUEÑAS
     .about-title {
         font-size: 29px;
         letter-spacing: -0.6px;
+    }
+}
+
+/* =========================================
+   HABILIDADES Y HERRAMIENTAS
+========================================= */
+
+.skills {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 190px 0 120px;
+
+    background: #050202;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.skills-content {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* =========================================
+   TÍTULO Y DESCRIPCIÓN
+========================================= */
+
+.skills-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto 55px;
+    padding: 0;
+
+    text-align: center;
+}
+
+/* ETIQUETA: HABILIDADES */
+.skills-label {
+    position: relative;
+    display: block;
+
+    margin-bottom: 24px;
+    padding-left: 15px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    color: #ff0000;
+}
+
+/* LÍNEA ROJA VERTICAL */
+.skills-label::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: #ff0000;
+    box-shadow: 0 0 10px rgba(255, 16, 40, 0.8);
+}
+
+.skills-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+
+    margin: 0 0 18px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+}
+
+.skills-title-white {
+    color: #ffffff;
+}
+
+.skills-title-red {
+    color: #ff0000;
+    text-shadow: 0 0 14px rgba(255, 16, 40, 0.2);
+}
+
+/* DESCRIPCIÓN */
+.skills-description {
+    position: relative;
+    max-width: 600px;
+    margin: 0;
+
+    font-family: "Oxanium", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.9;
+    letter-spacing: 0.4px;
+    color: #ffffff;
+}
+
+/* =========================================
+   CARRUSEL INFINITO
+========================================= */
+
+.skills-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    /* Desvanecimiento elegante en los extremos */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 8%,
+        #000 92%,
+        transparent
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 8%,
+        #000 92%,
+        transparent
+    );
+}
+
+.skills-track {
+    display: flex;
+    width: max-content;
+    gap: 35;
+    min-height: 180px;
+
+    animation: skills-scroll 10s linear infinite;
+
+    will-change: transform;
+}
+
+/* Cada grupo contiene los mismos 10 logos */
+.skills-group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 28px;
+
+    padding-right: 28px;
+}
+
+/* =========================================
+   TARJETAS CUADRADAS DE LOS LOGOS
+========================================= */
+
+/* CONTENEDOR: SOLO EL LOGO */
+.skill-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 100px;
+    height: 100px;
+    padding: 8px;
+
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    transition: transform 0.4s ease;
+}
+
+/* LOGOS */
+.skill-item img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+/* HOVER: CRECIMIENTO Y BRILLO SUTIL */
+.skill-item:hover {
+    transform: translateY(-5px) scale(1.08);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.skill-item:hover img {
+    transform: scale(1.05); 
+}
+
+/* =========================================
+   ANIMACIÓN CONTINUA
+========================================= */
+
+@keyframes skills-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pausar el movimiento al colocar el cursor */
+.skills-carousel:hover .skills-track {
+    animation-play-state: paused;
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .skills-track {
+        animation: none;
+        transform: none;
+    }
+
+    .skills-carousel {
+        overflow-x: auto;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .skills-group[aria-hidden="true"] {
+        display: none;
+    }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+    .skills {
+        padding: 75px 0 85px;
+    }
+
+    .skills-heading {
+        margin-bottom: 38px;
+    }
+
+    .skills-title {
+        gap: 6px;
+        font-size: 25px;
+    }
+
+    .skills-group {
+        gap: 18px;
+        padding-right: 18px;
+    }
+
+    .skill-item {
+        width: 80px;
+        height: 80px;
+        padding: 17px;
+        border-radius: 12px;
+    }
+
+    .skills-track {
+        animation-duration: 10s;
     }
 }
 
