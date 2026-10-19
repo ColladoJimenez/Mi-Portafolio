@@ -60,7 +60,7 @@ body {
     background-image: url("../Assets/cyber-header.svg");
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 100% 150%;
+    background-size: 100% 180%;
 }
 
 
@@ -288,7 +288,7 @@ body {
    NAVBAR RESPONSIVE — DESKTOP
 ========================================= */
 
-@media (min-width: 1000px) {
+@media (min-width: 1921px) {
     .navbar {
         min-height: clamp(120px, 10vw, 175px);
 
@@ -333,17 +333,366 @@ body {
 
 }
 
-/* =========================================
-TABLETS Y PANTALLAS PEQUEÑAS
-========================================= */
 
-@media (max-width: 420) {
+@media (min-width: 451px) and (max-width: 1199px) {
+
+    /* Encabezado compacto: únicamente el logo */
+
     .navbar {
-        min-height: 80px;
-        padding: 10px 24px;
-        background-size: 100% 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        /* ALTURA ESCALABLE */
+        height: clamp(55px, 14.25vw, 200px);
+        min-height: clamp(55px, 14.25vw, 200px);
+
+        box-sizing: border-box;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 10px 20px;
+        margin: 0;
+
+        background-image: url("../Assets/cyber-header-medium.svg");
+        background-size: 100% auto;
+        background-position: center top;
+        background-repeat: no-repeat;
+
+        z-index: 1003;
+    }
+
+    /* El logo funciona como activador */
+    /* ===== LOGO MÓVIL: TAMAÑO Y CENTRADO ===== */
+
+    .navbar > .logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -60%);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: clamp(35px, 10vw, 110px);
+        height: clamp(35px, 10vw, 110px);
+
+        margin: 0;
+        padding: 0;
+
+        background: transparent;
+        border: none;
+        box-shadow: none;
+
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        z-index: 1001;
+    }
+
+    .navbar > .logo img {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+        object-position: center;
+
+        pointer-events: none;
+    }
+
+
+    /* El logo reemplaza al botón hamburguesa */
+    .navbar > .menu-toggle {
+        display: none !important;
+    }
+
+    /* El contacto queda dentro del menú, no en el header */
+    .navbar > .contact-button {
+        display: none !important;
+    }
+
+    /* Panel lateral */
+    .navbar > .navigation {
+        position: fixed;
+        top: 0;
+        right: 0;
+
+        width: min(82vw, 340px);
+        height: 100vh;
+        height: 100dvh;
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+
+        gap: 8px;
+        padding: 100px 28px 35px;
+
+        background:
+            linear-gradient(
+                155deg,
+                rgba(24, 5, 8, 0.99),
+                rgba(5, 2, 2, 0.99) 65%
+            );
+
+        border-left: 1px solid rgba(255, 16, 40, 0.65);
+        box-shadow: -12px 0 45px rgba(255, 0, 25, 0.12);
+
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        transform: translateX(105%);
+        visibility: hidden;
+        pointer-events: none;
+
+        transition:
+            transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+            visibility 0.4s ease;
+
+        z-index: 1002;
+    }
+
+    /* Panel abierto */
+    .navbar > .navigation.is-open {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* Enlaces */
+    .navbar > .navigation .nav-link {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+
+        padding: 15px 14px;
+
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14px;
+        letter-spacing: 1.5px;
+        text-align: left;
+        white-space: normal;
+        text-decoration: none;
+
+        border-left: 2px solid transparent;
+        background: transparent;
+
+        transition:
+            color 0.25s ease,
+            background 0.25s ease,
+            border-color 0.25s ease,
+            padding-left 0.25s ease;
+    }
+
+    .navbar > .navigation .nav-link:hover,
+    .navbar > .navigation .nav-link.active {
+        color: #ff1028;
+        border-left-color: #ff1028;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(255, 16, 40, 0.12),
+                transparent
+            );
+
+        padding-left: 22px;
+
+        text-shadow: 0 0 12px rgba(255, 16, 40, 0.45);
     }
 }
+
+
+/* =========================================
+PANTALLAS PEQUEÑAS
+========================================= */
+
+@media (max-width: 450px) {
+
+    /* Encabezado compacto: únicamente el logo */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: clamp(75px, 20vw, 100px);
+    min-height: 75px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 20px;
+    margin: 0;
+
+    background-image: url("../Assets/cyber-header-mobile.svg");
+    background-color: transparent;
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    z-index: 1003;
+}
+
+    /* El logo funciona como activador */
+    /* ===== LOGO MÓVIL: TAMAÑO Y CENTRADO ===== */
+
+    .navbar > .logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -65%);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: clamp(45px, 14.5vw, 105px);
+        height: clamp(45px, 14.5vw, 105px);
+
+        margin: 0;
+        padding: 0;
+
+        background: transparent;
+        border: none;
+        box-shadow: none;
+
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        z-index: 1001;
+    }
+
+    .navbar > .logo img {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+        object-position: center;
+
+        pointer-events: none;
+    }
+
+
+    /* El logo reemplaza al botón hamburguesa */
+    .navbar > .menu-toggle {
+        display: none !important;
+    }
+
+    /* El contacto queda dentro del menú, no en el header */
+    .navbar > .contact-button {
+        display: none !important;
+    }
+
+    /* Panel lateral */
+    .navbar > .navigation {
+        position: fixed;
+        top: 0;
+        right: 0;
+
+        width: min(82vw, 340px);
+        height: 100vh;
+        height: 100dvh;
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+
+        gap: 8px;
+        padding: 100px 28px 35px;
+
+        background:
+            linear-gradient(
+                155deg,
+                rgba(24, 5, 8, 0.99),
+                rgba(5, 2, 2, 0.99) 65%
+            );
+
+        border-left: 1px solid rgba(255, 16, 40, 0.65);
+        box-shadow: -12px 0 45px rgba(255, 0, 25, 0.12);
+
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        transform: translateX(105%);
+        visibility: hidden;
+        pointer-events: none;
+
+        transition:
+            transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+            visibility 0.4s ease;
+
+        z-index: 1002;
+    }
+
+    /* Panel abierto */
+    .navbar > .navigation.is-open {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* Enlaces */
+    .navbar > .navigation .nav-link {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+
+        padding: 15px 14px;
+
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14px;
+        letter-spacing: 1.5px;
+        text-align: left;
+        white-space: normal;
+        text-decoration: none;
+
+        border-left: 2px solid transparent;
+        background: transparent;
+
+        transition:
+            color 0.25s ease,
+            background 0.25s ease,
+            border-color 0.25s ease,
+            padding-left 0.25s ease;
+    }
+
+    .navbar > .navigation .nav-link:hover,
+    .navbar > .navigation .nav-link.active {
+        color: #ff1028;
+        border-left-color: #ff1028;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(255, 16, 40, 0.12),
+                transparent
+            );
+
+        padding-left: 22px;
+
+        text-shadow: 0 0 12px rgba(255, 16, 40, 0.45);
+    }
+}
+
 
 /* Ocultar completamente el botón móvil en escritorio */
 @media (min-width: 900px) {
@@ -352,6 +701,43 @@ TABLETS Y PANTALLAS PEQUEÑAS
     }
 }
 
+
+/* =========================================
+   MENÚ LATERAL MÓVIL
+   DESTROYER PRIME CODEFORGE
+========================================= */
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1001;
+
+    background: rgba(0, 0, 0, 0.76);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+.menu-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Respeta la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .menu-overlay,
+    .navbar > .navigation {
+        transition: none !important;
+    }
+}
 
 
 /* =========================================
@@ -503,32 +889,115 @@ TABLETS Y PANTALLAS PEQUEÑAS
    RESPONSIVE
 ========================================= */
 
+
 @media (max-width: 900px) {
+
+    /* BANNER PARA TABLETS */
     .hero {
         min-height: 90vh;
-        padding: 150px 28px 70px;
+        padding: 130px 35px 70px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
 
+    /* CONTENEDOR */
+    .hero-content {
+        width: 100%;
+        max-width: 700px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* TÍTULO CENTRADO */
     .hero-title {
-        font-size: clamp(32px, 7vw, 48px);
+        width: 100%;
+        align-items: center;
+        text-align: center;
+
+        font-size: clamp(36px, 5.5vw, 48px);
+        line-height: 1.15;
         letter-spacing: -0.5px;
+
+        margin: 0 0 45px;
     }
 
+    /* DESCRIPCIÓN CENTRADA */
     .hero-description {
-        max-width: 100%;
+        width: 100%;
+        max-width: 550px;
+        margin: 0 auto 25px;
+
+        text-align: center;
         font-size: 12px;
+        line-height: 1.9;
+    }
+
+    /* BOTÓN CENTRADO */
+    .hero-button {
+        align-self: center;
     }
 }
 
-@media (max-width: 420px) {
+
+@media (max-width: 450px) {
+
+    /* BANNER MÓVIL */
     .hero {
-        padding-inline: 20px;
+        min-height: 100svh;
+        padding: 120px 20px 60px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
 
-    .hero-title {
-        font-size: clamp(27px, 7.5vw, 34px);
+    /* CONTENEDOR */
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+
+    /* TÍTULO CENTRADO */
+    .hero-title {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+
+        font-size: clamp(27px, 7.5vw, 34px);
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+
+        margin: 0 0 35px;
+    }
+
+    /* DESCRIPCIÓN CENTRADA */
+    .hero-description {
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto 25px;
+
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    /* BOTÓN CENTRADO */
+    .hero-button {
+        align-self: center;
+        justify-content: center;
+    }
+
 }
+
 
 
 /* =========================================
@@ -539,7 +1008,7 @@ TABLETS Y PANTALLAS PEQUEÑAS
     position: relative;
     width: 100%;
     box-sizing: border-box;
-    padding: 150px clamp(40px, 8vw, 120px) 30px;
+    padding: 150px clamp(40px, 8vw, 120px) 100px;
 
     background: #050202;
     color: #ffffff;
@@ -761,6 +1230,7 @@ TABLETS Y PANTALLAS PEQUEÑAS
     width: 150%;
     height: 150%;
     object-fit: cover;
+    background-color: black;
 
     animation: reactor-pulse 1.8s ease-in-out infinite;
     will-change: filter;
@@ -916,7 +1386,7 @@ TABLETS Y PANTALLAS PEQUEÑAS
 }
 
 
-@media (max-width: 420px) {
+@media (max-width: 450px) {
     .about {
         padding-inline: 20px;
     }

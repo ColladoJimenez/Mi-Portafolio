@@ -264,3 +264,68 @@ if (typeof gsap !== "undefined" &&
     }
 }
 
+
+/* =========================================
+   MENÚ LATERAL MÓVIL
+   DESTROYER PRIME CODEFORGE
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const logoToggle = document.getElementById("mobile-logo-toggle");
+    const navigation = document.getElementById("main-navigation");
+    const overlay = document.getElementById("menu-overlay");
+
+    if (!logoToggle || !navigation || !overlay) return;
+
+    const mobileQuery = window.matchMedia("(max-width: 900px)");
+
+    function setMenuOpen(open) {
+        navigation.classList.toggle("is-open", open);
+        overlay.classList.toggle("is-visible", open);
+
+        logoToggle.setAttribute("aria-expanded", String(open));
+        logoToggle.setAttribute(
+            "aria-label",
+            open ? "Cerrar menú de navegación" : "Abrir menú de navegación"
+        );
+
+        overlay.setAttribute("aria-hidden", String(!open));
+
+        document.body.style.overflow =
+            open && mobileQuery.matches ? "hidden" : "";
+    }
+
+    // Pulsar el logo abre o cierra el panel en móvil.
+    logoToggle.addEventListener("click", (event) => {
+        if (!mobileQuery.matches) return;
+
+        event.preventDefault();
+
+        const isOpen = navigation.classList.contains("is-open");
+        setMenuOpen(!isOpen);
+    });
+
+    // Pulsar el fondo oscuro cierra el menú.
+    overlay.addEventListener("click", () => {
+        setMenuOpen(false);
+    });
+
+    // Seleccionar una sección cierra el menú.
+    navigation.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            setMenuOpen(false);
+        });
+    });
+
+    // Escape cierra el menú.
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            setMenuOpen(false);
+        }
+    });
+
+    // Al volver a escritorio, restablece el estado móvil.
+    mobileQuery.addEventListener("change", () => {
+        setMenuOpen(false);
+    });
+});
