@@ -3006,7 +3006,7 @@ PANTALLAS PEQUEÑAS
         min-height: 100svh;
         box-sizing: border-box;
 
-        padding: 40px 20px;
+        padding: 100px 20px;
 
         display: flex;
         align-items: center;
@@ -3021,6 +3021,8 @@ PANTALLAS PEQUEÑAS
     /* ENCABEZADO */
     .projects-heading {
         margin-bottom: 35px;
+        align-items: center;
+        justify-content: center;
     }
 
     .projects-label {
@@ -3042,9 +3044,15 @@ PANTALLAS PEQUEÑAS
     }
 
     .projects-title {
-        gap: 6px;
-        font-size: clamp(21px, 6vw, 27px);
-        line-height: 1.35;
+        justify-content: center;
+        align-items: center;
+        gap: 7px;
+
+        margin-bottom: 5px;
+
+        font-size: clamp(23px, 6.5vw, 29px);
+        line-height: 1.25;
+        letter-spacing: 0;
     }
 
     .projects-description {
