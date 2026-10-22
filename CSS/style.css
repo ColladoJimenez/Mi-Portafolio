@@ -2497,7 +2497,10 @@ PANTALLAS PEQUEÑAS
     width: 100%;
     box-sizing: border-box;
 
-    padding: 150px clamp(30px, 6vw, 100px) 120px;
+    padding:
+        160px
+        clamp(40px, 8vw, 120px)
+        80px;
 
     background: #050202;
     color: #ffffff;
@@ -2606,7 +2609,7 @@ PANTALLAS PEQUEÑAS
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    gap: 28px;
+    gap: 25px;
     width: 100%;
 }
 
@@ -2628,7 +2631,7 @@ PANTALLAS PEQUEÑAS
     min-width: 0;
     min-height: 250px;
     box-sizing: border-box;
-    padding: 30px;
+    padding: 35px;
 
     /* El borde exterior es rojo */
     background: #ff0000;
@@ -2646,8 +2649,13 @@ PANTALLAS PEQUEÑAS
     );
 
     transition:
+        transform 0.35s ease,
         background 0.35s ease,
         filter 0.35s ease;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
 }
 
 /* CAPA INTERIOR NEGRA */
@@ -2692,34 +2700,6 @@ PANTALLAS PEQUEÑAS
 }
 
 /* =========================================
-   DECORACIONES SVG DENTRO DE LA CARD
-========================================= */
-
-.project-card-decoration {
-    position: absolute;
-    left: 50%;
-    z-index: 6;
-
-    display: block;
-    width: 90px;
-    height: auto;
-
-    transform: translateX(-50%);
-
-    pointer-events: none;
-    user-select: none;
-}
-
-/* DECORACIÓN SUPERIOR */
-.project-card-decoration-top {
-    top: 12px;
-}
-
-/* DECORACIÓN INFERIOR */
-.project-card-decoration-bottom {
-    bottom: 12px;
-}
-/* =========================================
    CORCHETE SVG: ESQUINA SUPERIOR IZQUIERDA
 ========================================= */
 
@@ -2733,6 +2713,7 @@ PANTALLAS PEQUEÑAS
 
     pointer-events: none;
     user-select: none;
+    transition: transform 0.35s ease;
 }
 
 /* SUPERIOR IZQUIERDA */
@@ -2759,6 +2740,36 @@ PANTALLAS PEQUEÑAS
     right: 0;
 }
 
+
+
+/* =========================================
+   DECORACIONES SVG CENTRALES DEL CARD
+========================================= */
+
+.project-border-decoration {
+    position: absolute;
+    left: 50%;
+    z-index: 5;
+
+    display: block;
+    width: 120px;
+    height: auto;
+
+    transform: translateX(-50%);
+
+    pointer-events: none;
+    user-select: none;
+}
+
+/* CENTRO SUPERIOR */
+.project-border-top {
+    top: 0;
+}
+
+/* CENTRO INFERIOR */
+.project-border-bottom {
+    bottom: 0;
+}
 
 /* =========================================
    IMAGEN IZQUIERDA
@@ -2956,7 +2967,7 @@ PANTALLAS PEQUEÑAS
     margin-top: auto;
     padding-top: 12px;
 
-    border-top: 1px solid rgba(255, 0, 0, 0.75);
+    border-top: 1px solid #ff0000;
 }
 
 .project-footer-category,
@@ -2966,7 +2977,7 @@ PANTALLAS PEQUEÑAS
     font-weight: 500;
     line-height: 1.5;
 
-    color: #d0d0d0;
+    color: #ffffff;
 }
 
 .project-footer-category {
@@ -2982,123 +2993,240 @@ PANTALLAS PEQUEÑAS
    TABLETS Y PANTALLAS MEDIANAS
 ========================================= */
 
-@media (max-width: 1050px) {
-
-    .projects {
-        padding: 100px 35px 80px;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .project-card {
-        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-        min-height: 260px;
-        gap: 22px;
-    }
-}
 
 /* =========================================
-   MÓVILES
+   PROYECTOS DESTACADOS — MÓVIL
+   DESTROYER PRIME CODEFORGE
 ========================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 450px) {
 
+    /* CONTENEDOR PRINCIPAL */
     .projects {
-        padding: 85px 20px 65px;
+        min-height: 100svh;
+        box-sizing: border-box;
+
+        padding: 40px 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
+    .projects-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* ENCABEZADO */
     .projects-heading {
-        margin-bottom: 38px;
+        margin-bottom: 35px;
+    }
+
+    .projects-label {
+        margin-bottom: 22px;
+        padding-left: 0;
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .projects-label::before {
+        top: auto;
+        left: 50%;
+        bottom: -9px;
+
+        width: 35px;
+        height: 2px;
+
+        transform: translateX(-50%);
     }
 
     .projects-title {
-        gap: 7px;
-        font-size: clamp(23px, 6.5vw, 29px);
+        gap: 6px;
+        font-size: clamp(21px, 6vw, 27px);
+        line-height: 1.35;
     }
 
     .projects-description {
-        max-width: 360px;
+        max-width: 100%;
+        font-size: 11px;
+        line-height: 1.8;
     }
 
+    /* UNA SOLA COLUMNA */
     .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 22px;
+        width: 100%;
     }
 
+    /* TARJETA */
     .project-card {
-        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-
-        min-height: 210px;
+        grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+        align-items: center;
         gap: 12px;
-        padding: 13px;
+        min-width: 0;
+        min-height: 0;
+        padding: 25px 16px;
+
+        /* Mantener las esquinas angulares */
+        clip-path: polygon(
+            20px 0,
+            calc(100% - 20px) 0,
+            100% 20px,
+            100% calc(100% - 20px),
+            calc(100% - 20px) 100%,
+            20px 100%,
+            0 calc(100% - 20px),
+            0 20px
+        );
+    }
+
+    .project-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: stretch;
+        height: 100%;
+        min-width: 0;
+    }
+
+    /* OCULTAR LA DESCRIPCIÓN EN MÓVIL */
+    .project-description {
+        display: none;
+    }
+
+    /* EL PIE SIEMPRE ABAJO */
+    .project-footer {
+        width: 100%;
+        margin-top: auto;
+        padding-top: 8px;
+    }
+
+    .project-image-caption {
+    display: none;
+    }
+
+    .project-info .project-description {
+        display: none;
+    }
+
+    /* CAPA NEGRA INTERIOR */
+    .project-card::after {
+        inset: 1.5px;
+        clip-path: polygon(
+            19px 0,
+            calc(100% - 19px) 0,
+            100% 19px,
+            100% calc(100% - 19px),
+            calc(100% - 19px) 100%,
+            19px 100%,
+            0 calc(100% - 19px),
+            0 19px
+        );
+    }
+
+    /* DECORACIONES SVG DE LAS ESQUINAS */
+    .project-corner {
+        width: clamp(60px, 15vw, 75px);
+        height: auto;
+    }
+
+    /* DECORACIONES SVG CENTRALES */
+    .project-border-decoration {
+        width: clamp(45px, 15vw, 65px);
+        height: auto;
+    }
+
+    .project-border-top {
+        top: 0;
+    }
+
+    .project-border-bottom {
+        bottom: 0;
+    }
+
+    /* MARCO DE LA IMAGEN */
+    .project-image-frame {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        height: auto;
+        align-self: start;
+        overflow: hidden;
+    }
+
+    .project-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* TEXTO SOBRE LA IMAGEN */
+    .project-image-caption {
+        left: 5px;
+        right: 5px;
+        bottom: 6px;
+        font-size: 8px;
+    }
+
+    /* ESQUINAS TÉCNICAS DEL MARCO */
+    .project-image-frame::before,
+    .project-image-frame::after {
+        width: 8px;
+        height: 8px;
+    }
+
+    .project-image-frame::before {
+        top: 5px;
+        left: 5px;
+    }
+
+    .project-image-frame::after {
+        right: 5px;
+        bottom: 5px;
+    }
+
+    /* INFORMACIÓN DEL PROYECTO */
+    .project-info {
+        min-width: 0;
     }
 
     .project-meta {
         gap: 5px;
-        font-size: 9px;
+        margin-bottom: 6px;
+        font-size: 8px;
     }
 
     .project-category {
+        margin-bottom: 7px;
         font-size: 9px;
     }
 
     .project-title {
-        font-size: clamp(17px, 5vw, 22px);
+        margin-bottom: 7px;
+        font-size: clamp(14px, 4vw, 18px);
+        line-height: 1.35;
+        overflow-wrap: anywhere;
     }
 
     .project-description {
-        font-size: 11px;
-        line-height: 1.5;
         margin-bottom: 12px;
+        font-size: 10px;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
     }
 
+    /* PIE DE TARJETA */
     .project-footer {
+        flex-wrap: wrap;
         gap: 5px;
         padding-top: 8px;
     }
 
     .project-footer-category,
     .project-year {
-        font-size: 9px;
-    }
-
-    .project-image-caption {
-        left: 7px;
-        right: 7px;
-        bottom: 7px;
         font-size: 8px;
-    }
-
-    .project-image-frame::before {
-        top: 7px;
-        left: 7px;
-    }
-
-    .project-image-frame::after {
-        right: 7px;
-        bottom: 7px;
-    }
-}
-
-/* PANTALLAS MUY ESTRECHAS */
-
-@media (max-width: 380px) {
-
-    .project-card {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .project-image-frame {
-        width: 100%;
-        aspect-ratio: 1.6 / 1;
-    }
-
-    .project-info {
-        min-height: 200px;
     }
 }
 
