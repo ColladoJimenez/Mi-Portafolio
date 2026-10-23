@@ -329,3 +329,188 @@ document.addEventListener("DOMContentLoaded", () => {
         setMenuOpen(false);
     });
 });
+
+
+/* =========================================
+   PROYECTOS DESTACADOS — ANIMACIÓN GSAP
+   DESTROYER PRIME CODEFORGE
+========================================= */
+
+(() => {
+
+    const projectsSection = document.querySelector("#proyectos");
+
+    if (!projectsSection) return;
+
+    // Comprobar que GSAP y ScrollTrigger estén disponibles
+    if (
+        typeof gsap === "undefined" ||
+        typeof ScrollTrigger === "undefined"
+    ) {
+        console.warn("GSAP o ScrollTrigger no están cargados.");
+        return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ELEMENTOS DEL ENCABEZADO
+    const projectsLabel = projectsSection.querySelector(".projects-label");
+    const projectsTitleWhite = projectsSection.querySelector(".projects-title-white");
+    const projectsTitleRed = projectsSection.querySelector(".projects-title-red");
+    const projectsDescription = projectsSection.querySelector(".projects-description");
+
+    // TARJETAS
+    const projectsGrid = projectsSection.querySelector(".projects-grid");
+    const projectCards = projectsGrid
+        ? projectsGrid.querySelectorAll(".project-card")
+        : [];
+
+    // Respetar la preferencia de movimiento reducido
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+    }
+
+    // Crear la secuencia de entrada al llegar a la sección
+    const projectsTimeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: projectsSection,
+            start: "top 75%",
+            toggleActions: "play none none none",
+            once: true
+        }
+    });
+
+    // 1. ETIQUETA: entrada desde la izquierda
+    if (projectsLabel) {
+        projectsTimeline.fromTo(
+            projectsLabel,
+            {
+                autoAlpha: 0,
+                x: -30
+            },
+            {
+                autoAlpha: 1,
+                x: 0,
+                duration: 0.7,
+                ease: "power3.out"
+            }
+        );
+    }
+
+    // 2. TÍTULO BLANCO: aparición ascendente
+    if (projectsTitleWhite) {
+        projectsTimeline.fromTo(
+            projectsTitleWhite,
+            {
+                autoAlpha: 0,
+                y: 35
+            },
+            {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            },
+            "-=0.3"
+        );
+    }
+
+    // 3. TÍTULO ROJO: entrada con efecto de energía
+    if (projectsTitleRed) {
+        projectsTimeline.fromTo(
+            projectsTitleRed,
+            {
+                autoAlpha: 0,
+                y: 30,
+                textShadow: "0 0 0 rgba(255, 0, 0, 0)"
+            },
+            {
+                autoAlpha: 1,
+                y: 0,
+                textShadow: "0 0 14px rgba(255, 0, 0, 0.2)",
+                duration: 0.9,
+                ease: "power3.out"
+            },
+            "-=0.4"
+        );
+    }
+
+    // 4. DESCRIPCIÓN: fundido suave
+    if (projectsDescription) {
+        projectsTimeline.fromTo(
+            projectsDescription,
+            {
+                autoAlpha: 0,
+                y: 20
+            },
+            {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out"
+            },
+            "-=0.35"
+        );
+    }
+
+    // 5. TARJETAS: entrada alternada desde ambos lados
+    if (projectCards.length > 0) {
+
+        projectsTimeline.fromTo(
+            projectCards,
+            {
+                autoAlpha: 0,
+                x: (index) => index % 2 === 0 ? -55 : 55,
+                y: 25,
+                scale: 0.96
+            },
+            {
+                autoAlpha: 1,
+                x: 0,
+                y: 0,
+                scale: 1,
+
+                duration: 1,
+                stagger: 0.18,
+                ease: "power3.out",
+
+                // Recuperar el control del transform para
+                // conservar el hover definido en tu CSS
+                onComplete: () => {
+                    gsap.set(projectCards, {
+                        clearProps: "transform,opacity,visibility"
+                    });
+                }
+            },
+            "-=0.15"
+        );
+    }
+
+})();
+
+
+/* =========================================
+   ACTIVACIÓN DEL REACTOR AL HACER CLIC
+========================================= */
+
+document.querySelectorAll(".experience-reactor").forEach((reactor) => {
+
+    reactor.addEventListener("click", () => {
+
+        // Reinicia el efecto si se hace clic varias veces
+        reactor.classList.remove("is-activated");
+
+        // Permite volver a ejecutar la animación
+        void reactor.offsetWidth;
+
+        // Activa la descarga de energía
+        reactor.classList.add("is-activated");
+
+        // Retira la clase al terminar
+        setTimeout(() => {
+            reactor.classList.remove("is-activated");
+        }, 1100);
+
+    });
+
+});
