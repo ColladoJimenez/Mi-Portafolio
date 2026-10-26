@@ -1,0 +1,42 @@
+
+/* =========================================
+   DESTROYER PRIME CODEFORGE
+   CONFIGURACIÓN GLOBAL
+========================================= */
+
+/* ===== VARIABLES GLOBALES ===== */
+
+:root {
+    /* Colores principales */
+    --color-bg: #050202;
+    --color-red: #ff0000;
+    --color-white: #ffffff;
+
+    /* Colores secundarios */
+    --color-border: rgba(255, 255, 255, 0.16);
+
+    /* Compatibilidad con el encabezado actual */
+    --header-width: 100%;
+    --header-bg: var(--color-bg);
+    --header-border: var(--color-border);
+    --header-red: var(--color-red);
+    --header-white: var(--color-white);
+}
+
+/* ===== REINICIO GLOBAL ===== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ===== CONFIGURACIÓN DEL DOCUMENTO ===== */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}

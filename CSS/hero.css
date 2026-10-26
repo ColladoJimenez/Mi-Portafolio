@@ -1,0 +1,330 @@
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+    padding:
+        160px
+        clamp(40px, 8vw, 120px)
+        80px;
+
+    background: #050202;
+    color: #ffffff;
+
+    /* Permite colocar la imagen detrás del contenido */
+    isolation: isolate;
+}
+
+/* IMAGEN DE FONDO + DEGRADADO NEGRO */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 2, 2, 0.90) 0%,
+            rgba(5, 2, 2, 0.80) 45%,
+            rgba(5, 2, 2, 0.55) 100%
+        ),
+        url("../Assets/banner-iron-man.svg");
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    pointer-events: none;
+}
+
+/* CONTENIDO */
+.hero-content {
+    width: 100%;
+    max-width: 850px;
+}
+
+/* TITULAR */
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin: 0 0 100px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 55px;
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -1px;
+}
+
+/* PRIMERA LÍNEA */
+.hero-title-white {
+    color: #ffffff;
+}
+
+/* SEGUNDA LÍNEA */
+.hero-title-red {
+    color: #ff0000;
+}
+
+/* DESCRIPCIÓN */
+.hero-description {
+    max-width: 550px;
+    margin-bottom: 25px;
+
+    font-family: "Oxanium", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.9;
+    letter-spacing: 0.4px;
+    color: #d0d0d0;
+}
+
+.hero-description p {
+    margin: 0;
+}
+
+/* ===== BOTÓN VER PROYECTOS ===== */
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+
+    min-height: 46px;
+    padding: 0 18px;
+
+    background: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+
+    color: #ffffff;
+    font-family: "Orbitron", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Flecha diagonal */
+.hero-button-icon {
+    flex-shrink: 0;
+    color: currentColor;
+    transition: transform 0.25s ease;
+}
+
+/* Hover rojo, igual que CONTÁCTAME */
+.hero-button:hover {
+    background: var(--header-red);
+    border-color: var(--header-red);
+    color: #ffffff;
+    box-shadow: 0 0 18px rgba(225, 29, 46, 0.3);
+}
+
+/* Animación de la flecha */
+.hero-button:hover .hero-button-icon {
+    transform: translate(2px, -2px);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+
+@media (min-width: 1200px) {
+
+    /* CONTENEDOR PRINCIPAL */
+    .hero {
+        min-height: 100vh;
+
+        padding:
+            clamp(110px, 12.5vw, 160px)
+            clamp(40px, 8vw, 120px)
+            clamp(50px, 6.25vw, 80px);
+    }
+
+    /* CONTENIDO */
+    .hero-content {
+        width: 100%;
+        max-width: 1500px;
+        margin-inline: auto;
+    }
+
+    /* TÍTULO ESCALABLE */
+    .hero-title {
+        font-size: clamp(38px, calc(38px + (100vw - 1200px) * 0.02125), 55px);
+        font-weight: 800;
+        line-height: 1.12;
+        letter-spacing: -1px;
+
+        margin-bottom: clamp(45px, 7.8vw, 100px);
+    }
+
+    /* DESCRIPCIÓN ESCALABLE */
+    .hero-description {
+        width: 100%;
+        max-width: clamp(420px, 43vw, 550px);
+
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.9;
+        letter-spacing: 0.4px;
+
+        margin-bottom: 25px;
+    }
+
+    /* =========================================
+       BOTÓN VER PROYECTOS
+       EVOLUCIÓN DE TAMAÑO COMO CONTÁCTAME
+    ========================================= */
+    .hero-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: clamp(6px, calc(6px + (100vw - 1200px) * 0.00625), 11px);
+
+        min-height: clamp(34px, calc(34px + (100vw - 1200px) * 0.015), 46px);
+
+        padding-inline: clamp(9px, calc(9px + (100vw - 1200px) * 0.01125), 18px);
+
+        font-family: "Orbitron", sans-serif;
+        font-size: clamp(9px, calc(9px + (100vw - 1200px) * 0.00375), 12px);
+        font-weight: 600;
+        letter-spacing: 0.3px;
+
+        border-radius: clamp(8px, calc(8px + (100vw - 1200px) * 0.0025), 10px);
+
+        white-space: nowrap;
+    }
+
+    /* FLECHA ESCALABLE */
+    .hero-button-icon {
+        width: clamp(14px, calc(14px + (100vw - 1200px) * 0.005), 18px);
+        height: clamp(14px, calc(14px + (100vw - 1200px) * 0.005), 18px);
+
+        flex-shrink: 0;
+    }
+}
+
+
+@media (min-width: 451px) and (max-width: 1199px) {
+
+    /* BANNER PARA TABLETS */
+    .hero {
+        min-height: 100svh;
+        padding: 130px 35px 70px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* CONTENEDOR */
+    .hero-content {
+        width: 100%;
+        max-width: 700px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* TÍTULO CENTRADO */
+    .hero-title {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+
+        font-size: clamp(36px, 5.5vw, 48px);
+        line-height: 1.15;
+        letter-spacing: -0.5px;
+
+        margin: 0 0 45px;
+    }
+
+    /* DESCRIPCIÓN CENTRADA */
+    .hero-description {
+        width: 100%;
+        max-width: 550px;
+        margin: 0 auto 25px;
+
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    /* BOTÓN CENTRADO */
+    .hero-button {
+        align-self: center;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    /* BANNER MÓVIL */
+    .hero {
+        min-height: 100svh;
+        padding: 120px 20px 60px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* CONTENEDOR */
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* TÍTULO CENTRADO */
+    .hero-title {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+
+        font-size: clamp(27px, 7.5vw, 34px);
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+
+        margin: 0 0 35px;
+    }
+
+    /* DESCRIPCIÓN CENTRADA */
+    .hero-description {
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto 25px;
+
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    /* BOTÓN CENTRADO */
+    .hero-button {
+        align-self: center;
+        justify-content: center;
+    }
+
+}

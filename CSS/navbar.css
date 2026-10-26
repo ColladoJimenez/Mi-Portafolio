@@ -1,0 +1,736 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    width: 100%;
+    max-width: none;
+    min-height: 235px;
+    box-sizing: border-box;
+    margin: 0;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: clamp(18px, 2.5vw, 40px);
+
+    padding: 15px clamp(70px, 6vw, 150px) 90px;
+
+    /* SVG transparente como fondo */
+    background-color: transparent;
+    background-image: url("../Assets/cyber-header.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 180%;
+}
+
+
+
+
+/* ===== NAVEGACIÓN ORBITRON ===== */
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(45px, 5vw, 75px);
+}
+
+
+/* =========================================
+   ENLACES DE NAVEGACIÓN
+========================================= */
+.nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 12px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+
+    color: #ffffff;
+    transform: scale(1);
+    transform-origin: center;
+
+    transition:
+        color 0.4s ease,
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        text-shadow 0.4s ease;
+}
+
+/* =========================================
+   HOVER: TEXTO ROJO, AGRANDADO Y NEÓN
+========================================= */
+.nav-link:hover {
+    color: #ff0000;
+    transform: scale(1.15);
+
+    text-shadow:
+        0 0 5px rgba(255, 16, 40, 1),
+        0 0 12px rgba(255, 16, 40, 0.9),
+        0 0 22px rgba(255, 16, 40, 0.65);
+}
+
+/* =========================================
+   LÍNEA ROJA INFERIOR
+========================================= */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 2px;
+
+    height: 2px;
+    background: #ff1028;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    opacity: 0;
+
+    box-shadow:
+        0 0 5px rgba(255, 16, 40, 0.9),
+        0 0 12px rgba(255, 16, 40, 0.5);
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.nav-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(#ff1028, #ff1028) left top / 10px 2px no-repeat,
+        linear-gradient(#ff1028, #ff1028) left top / 2px 10px no-repeat,
+
+        linear-gradient(#ff1028, #ff1028) right top / 10px 2px no-repeat,
+        linear-gradient(#ff1028, #ff1028) right top / 2px 10px no-repeat,
+
+        linear-gradient(#ff1028, #ff1028) left bottom / 10px 2px no-repeat,
+        linear-gradient(#ff1028, #ff1028) left bottom / 2px 10px no-repeat,
+
+        linear-gradient(#ff1028, #ff1028) right bottom / 10px 2px no-repeat,
+        linear-gradient(#ff1028, #ff1028) right bottom / 2px 10px no-repeat;
+
+    opacity: 0;
+    transform: scale(0.92);
+
+    filter: drop-shadow(0 0 4px rgba(255, 16, 40, 0.9));
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+    pointer-events: none;
+}
+
+.nav-link:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* HOVER: LA LÍNEA APARECE E ILUMINA */
+.nav-link:hover::after {
+    transform: scaleX(0);
+    opacity: 0;
+}
+
+/* =========================================
+   ENLACE ACTIVO
+========================================= */
+.nav-link.active {
+    color: #ffffff;
+}
+
+.nav-link.active::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+.nav-link.active:hover {
+    color: #ff1028;
+}
+
+.nav-link.active:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ===== BOTÓN CONTÁCTAME: MARCO BLANCO ===== */
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+
+    min-height: 46px;
+    padding: 0 18px;
+
+    background: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+
+    color: #ffffff;
+    font-family: "Orbitron", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.whatsapp-icon {
+    flex-shrink: 0;
+    color: currentColor;
+    transition: transform 0.25s ease;
+}
+
+/* Hover rojo */
+
+.contact-button:hover {
+    background: var(--header-red);
+    border-color: var(--header-red);
+    color: #ffffff;
+    box-shadow: 0 0 18px rgba(225, 29, 46, 0.3);
+}
+
+.contact-button:hover .whatsapp-icon {
+    transform: scale(1.1);
+}
+
+/* ===== LOGO ===== */
+
+.logo img {
+    display: block;
+    width: 210px;
+    max-height: 125px;
+    object-fit: contain;
+    object-position: left center;
+}
+
+/* =========================================
+   NAVBAR RESPONSIVE — DESKTOP
+========================================= */
+
+
+/* =========================================
+   NAVBAR RESPONSIVE - ESCRITORIO COMPACTO
+   DESDE 1200px
+========================================= */
+
+
+@media (min-width: 1200px) {
+
+    /* =========================================
+       CONTENEDOR PRINCIPAL
+    ========================================= */
+    .navbar {
+        min-height: clamp(120px, 12vw, 235px);
+
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+
+        padding:
+            clamp(25px, 3vw, 40px)
+            clamp(55px, 6vw, 150px)
+            clamp(20px, 2.5vw, 90px);
+
+        gap: clamp(12px, 2vw, 40px);
+
+        background-size: 100% 180%;
+    }
+
+    /* =========================================
+       LOGO ESCALABLE
+    ========================================= */
+    .navbar > .logo img {
+        display: block;
+        width: clamp(120px, 12vw, 210px);
+        max-height: clamp(65px, 7vw, 125px);
+        object-fit: contain;
+    }
+
+    /* =========================================
+       NAVEGACIÓN
+    ========================================= */
+    .navbar > .navigation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: clamp(12px, 3vw, 75px);
+    }
+
+    /* SECCIONES: DE 11px A 15px */
+    .navbar > .navigation .nav-link {
+        font-family: "Orbitron", sans-serif;
+        font-size: clamp(11px, calc(11px + (100vw - 1200px) * 0.005), 15px);
+        font-weight: 600;
+
+        padding: 8px clamp(4px, 0.5vw, 12px);
+        white-space: nowrap;
+    }
+
+    /* HOVER */
+    .navbar > .navigation .nav-link:hover {
+        transform: scale(1.10);
+    }
+
+    /* =========================================
+       BOTÓN: ESCALA HASTA EL TAMAÑO ORIGINAL
+    ========================================= */
+    .navbar > .contact-button {
+        min-height: clamp(34px, calc(34px + (100vw - 1200px) * 0.015), 46px);
+        padding-inline: clamp(9px, calc(9px + (100vw - 1200px) * 0.01125), 18px);
+        gap: clamp(6px, calc(6px + (100vw - 1200px) * 0.00625), 11px);
+
+        font-family: "Orbitron", sans-serif;
+        font-size: clamp(9px, calc(9px + (100vw - 1200px) * 0.00375), 12px);
+        font-weight: 600;
+        letter-spacing: 0.3px;
+
+        border-radius: clamp(8px, calc(8px + (100vw - 1200px) * 0.0025), 10px);
+        white-space: nowrap;
+    }
+
+    /* ICONO DE WHATSAPP */
+    .navbar > .contact-button .whatsapp-icon {
+        width: clamp(14px, calc(14px + (100vw - 1200px) * 0.005), 18px);
+        height: clamp(14px, calc(14px + (100vw - 1200px) * 0.005), 18px);
+        flex-shrink: 0;
+    }
+
+    /* ALINEACIÓN VERTICAL */
+    .navbar > .logo,
+    .navbar > .navigation,
+    .navbar > .contact-button {
+        transform: translateY(-30px);
+    }
+}
+
+
+@media (min-width: 451px) and (max-width: 1199px) {
+
+    /* Encabezado compacto: únicamente el logo */
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        /* ALTURA ESCALABLE */
+        height: clamp(55px, 14.25vw, 200px);
+        min-height: clamp(55px, 14.25vw, 200px);
+
+        box-sizing: border-box;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 10px 20px;
+        margin: 0;
+
+        background-image: url("../Assets/cyber-header-medium.svg");
+        background-size: 100% auto;
+        background-position: center top;
+        background-repeat: no-repeat;
+
+        z-index: 1003;
+    }
+
+    /* El logo funciona como activador */
+    /* ===== LOGO MÓVIL: TAMAÑO Y CENTRADO ===== */
+
+    .navbar > .logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -60%);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: clamp(35px, 10vw, 110px);
+        height: clamp(35px, 10vw, 110px);
+
+        margin: 0;
+        padding: 0;
+
+        background: transparent;
+        border: none;
+        box-shadow: none;
+
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        z-index: 1001;
+    }
+
+    .navbar > .logo img {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+        object-position: center;
+
+        pointer-events: none;
+    }
+
+
+    /* El logo reemplaza al botón hamburguesa */
+    .navbar > .menu-toggle {
+        display: none !important;
+    }
+
+    /* El contacto queda dentro del menú, no en el header */
+    .navbar > .contact-button {
+        display: none !important;
+    }
+
+    /* Panel lateral */
+    .navbar > .navigation {
+        position: fixed;
+        top: 0;
+        right: 0;
+
+        width: min(82vw, 340px);
+        height: 100vh;
+        height: 100dvh;
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+
+        gap: 8px;
+        padding: 100px 28px 35px;
+
+        background:
+            linear-gradient(
+                155deg,
+                rgba(24, 5, 8, 0.99),
+                rgba(5, 2, 2, 0.99) 65%
+            );
+
+        border-left: 1px solid rgba(255, 16, 40, 0.65);
+        box-shadow: -12px 0 45px rgba(255, 0, 25, 0.12);
+
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        transform: translateX(105%);
+        visibility: hidden;
+        pointer-events: none;
+
+        transition:
+            transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+            visibility 0.4s ease;
+
+        z-index: 1002;
+    }
+
+    /* Panel abierto */
+    .navbar > .navigation.is-open {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* Enlaces */
+    .navbar > .navigation .nav-link {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+
+        padding: 15px 14px;
+
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14px;
+        letter-spacing: 1.5px;
+        text-align: left;
+        white-space: normal;
+        text-decoration: none;
+
+        border-left: 2px solid transparent;
+        background: transparent;
+
+        transition:
+            color 0.25s ease,
+            background 0.25s ease,
+            border-color 0.25s ease,
+            padding-left 0.25s ease;
+    }
+
+    .navbar > .navigation .nav-link:hover,
+    .navbar > .navigation .nav-link.active {
+        color: #ff1028;
+        border-left-color: #ff1028;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(255, 16, 40, 0.12),
+                transparent
+            );
+
+        padding-left: 22px;
+
+        text-shadow: 0 0 12px rgba(255, 16, 40, 0.45);
+    }
+}
+
+
+/* =========================================
+PANTALLAS PEQUEÑAS
+========================================= */
+
+@media (max-width: 450px) {
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: clamp(75px, 20vw, 100px);
+    min-height: 75px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 20px;
+    margin: 0;
+
+    background-image: url("../Assets/cyber-header-mobile.svg");
+    background-color: transparent;
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    z-index: 1003;
+}
+
+    /* El logo funciona como activador */
+    /* ===== LOGO MÓVIL: TAMAÑO Y CENTRADO ===== */
+
+    .navbar > .logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -65%);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: clamp(45px, 14.5vw, 105px);
+        height: clamp(45px, 14.5vw, 105px);
+
+        margin: 0;
+        padding: 0;
+
+        background: transparent;
+        border: none;
+        box-shadow: none;
+
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        z-index: 1001;
+    }
+
+    .navbar > .logo img {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+        object-position: center;
+
+        pointer-events: none;
+    }
+
+
+    /* El logo reemplaza al botón hamburguesa */
+    .navbar > .menu-toggle {
+        display: none !important;
+    }
+
+    /* El contacto queda dentro del menú, no en el header */
+    .navbar > .contact-button {
+        display: none !important;
+    }
+
+    /* Panel lateral */
+    .navbar > .navigation {
+        position: fixed;
+        top: 0;
+        right: 0;
+
+        width: min(82vw, 340px);
+        height: 100vh;
+        height: 100dvh;
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+
+        gap: 8px;
+        padding: 100px 28px 35px;
+
+        background:
+            linear-gradient(
+                155deg,
+                rgba(24, 5, 8, 0.99),
+                rgba(5, 2, 2, 0.99) 65%
+            );
+
+        border-left: 1px solid rgba(255, 16, 40, 0.65);
+        box-shadow: -12px 0 45px rgba(255, 0, 25, 0.12);
+
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        transform: translateX(105%);
+        visibility: hidden;
+        pointer-events: none;
+
+        transition:
+            transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+            visibility 0.4s ease;
+
+        z-index: 1002;
+    }
+
+    /* Panel abierto */
+    .navbar > .navigation.is-open {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* Enlaces */
+    .navbar > .navigation .nav-link {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+
+        padding: 15px 14px;
+
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14px;
+        letter-spacing: 1.5px;
+        text-align: left;
+        white-space: normal;
+        text-decoration: none;
+
+        border-left: 2px solid transparent;
+        background: transparent;
+
+        transition:
+            color 0.25s ease,
+            background 0.25s ease,
+            border-color 0.25s ease,
+            padding-left 0.25s ease;
+    }
+
+    .navbar > .navigation .nav-link:hover,
+    .navbar > .navigation .nav-link.active {
+        color: #ff1028;
+        border-left-color: #ff1028;
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(255, 16, 40, 0.12),
+                transparent
+            );
+
+        padding-left: 22px;
+
+        text-shadow: 0 0 12px rgba(255, 16, 40, 0.45);
+    }
+}
+
+
+/* Ocultar completamente el botón móvil en escritorio */
+@media (min-width: 900px) {
+    .navbar > .menu-toggle {
+        display: none !important;
+    }
+}
+
+
+/* =========================================
+   MENÚ LATERAL MÓVIL
+   DESTROYER PRIME CODEFORGE
+========================================= */
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1001;
+
+    background: rgba(0, 0, 0, 0.76);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+.menu-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Respeta la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .menu-overlay,
+    .navbar > .navigation {
+        transition: none !important;
+    }
+}
+

@@ -1,0 +1,1759 @@
+.experience {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 280px clamp(40px, 8vw, 120px) 120px;
+
+    background: #050202;
+    color: #ffffff;
+    overflow: hidden;
+    --experience-image-height: 250px;
+}
+
+.experience-content {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   ENCABEZADO
+========================================= */
+
+.experience-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-bottom: 80px;
+}
+
+.experience-label {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 25px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ff0000;
+}
+
+.experience-label::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: #ff0000;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+}
+
+.experience-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    gap: 10px;
+    margin: 0 0 18px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+}
+
+.experience-title-white {
+    color: #ffffff;
+}
+
+.experience-title-red {
+    color: #ff0000;
+}
+
+/* =========================================
+   LÍNEA DE TIEMPO VERTICAL
+========================================= */
+
+.experience-timeline {
+    position: relative;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* Línea vertical roja central */
+
+.experience-timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+
+    width: 2px;
+
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        #ff0000 8%,
+        #ff0000 92%,
+        transparent
+    );
+
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.35);
+    transform: translateX(-50%);
+}
+
+/* Cada hito ocupa tres columnas:
+   información | reactor | espacio */
+
+.experience-item {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 100px minmax(0, 1fr);
+    align-items: start;
+
+    min-height: 300px;
+}
+
+/* =========================================
+   REACTOR CENTRAL
+========================================= */
+
+.experience-node {
+    position: relative;
+    z-index: 2;
+
+    grid-column: 2;
+    grid-row: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.experience-reactor {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 90px;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+
+    border: 2px solid rgba(255, 0, 0, 0.9);
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        #210505 0%,
+        #0b0303 65%,
+        #050202 100%
+    );
+
+    box-shadow:
+        0 0 10px rgba(255, 0, 0, 0.4),
+        inset 0 0 14px rgba(255, 0, 0, 0.2);
+}
+
+/* =========================================
+   AROS DEL REACTOR
+========================================= */
+
+.experience-reactor-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* ARO EXTERIOR: 2px, línea continua */
+
+.experience-ring-outer {
+    inset: -15px;
+
+    border: 2px solid #ff0000;
+    border-radius: 50%;
+}
+
+
+/* ARO MEDIO: 5px, entrecortado y giratorio */
+
+.experience-ring-middle {
+    inset: -5px;
+
+    border: 5px dashed #ff0000;
+
+    box-shadow:
+        0 0 10px rgba(255, 0, 0, 0.65),
+        0 0 15px rgba(255, 0, 0, 0.25);
+
+    animation: experience-rotate 18s linear infinite;
+}
+
+/* ARO INTERIOR: 2px, línea continua */
+
+.experience-ring-inner {
+    inset: 10px;
+
+    border: 2px solid #ff0000;
+    border-radius: 50%;
+
+    box-shadow:
+        inset 0 0 7px rgba(255, 0, 0, 0.2);
+}
+
+/* Icono blanco central */
+
+.experience-reactor-icon {
+    position: relative;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: auto;
+
+    color: #ffffff;
+    cursor: pointer;
+
+    filter: drop-shadow(
+        0 0 5px rgba(255, 255, 255, 0.45)
+    );
+
+    transition:
+        filter 0.2s ease,
+        transform 0.2s ease;
+}
+
+.experience-reactor-icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes experience-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================
+   TARJETA DEL HITO
+========================================= */
+
+.experience-card {
+    grid-column: 3;
+    grid-row: 1;
+
+    min-width: 0;
+    padding: 5px 0 40px 25px;
+}
+
+.experience-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    font-family: "Oxanium", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #ff0000;
+}
+
+.experience-meta-divider {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.experience-card-title {
+    margin: 0;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(17px, 1.5vw, 23px);
+    font-weight: 700;
+    line-height: 1.5;
+
+    color: #ffffff;
+}
+
+/* Subrayado tecnológico */
+
+.experience-title-underline,
+.experience-title-underline-reverse {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    width: min(100%, 550px);
+    height: 5px;
+    margin-top: 12px;
+    margin-bottom: 20px;
+
+    clip-path: none;
+}
+
+.experience-title-underline {
+    margin-left: 0;
+    margin-right: auto;
+
+    background: linear-gradient(
+        90deg,
+        #ff0000 0%,
+        rgba(255, 0, 0, 0.65) 65%,
+        transparent 100%
+    );
+}
+
+.experience-title-underline-reverse {
+    margin-left: auto;
+    margin-right: 0;
+
+    background: linear-gradient(
+        270deg,
+        #ff0000 0%,
+        rgba(255, 0, 0, 0.65) 65%,
+        transparent 100%
+    );
+}
+
+.experience-description {
+    max-width: 600px;
+    margin: 0;
+
+    font-family: "Oxanium", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.9;
+    letter-spacing: 0.4px;
+
+    color: #ffffff;
+}
+
+/* =========================================
+   ESCUDO DE LA UNIVERSIDAD
+========================================= */
+
+
+.experience-institution {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 25px;
+
+    width: 100%;
+}
+
+
+
+/* =========================================
+   HITO 002 — TARJETA A LA IZQUIERDA
+========================================= */
+
+.experience-item-left .experience-card {
+    grid-column: 1;
+    grid-row: 1;
+
+    padding: 5px 25px 40px 0;
+
+    text-align: right;
+}
+
+/* Alinear los metadatos hacia la derecha */
+
+.experience-item-left .experience-meta {
+    justify-content: flex-end;
+}
+
+/* Texto alineado hacia la derecha */
+
+.experience-item-left .experience-description {
+    margin-left: auto;
+}
+
+/* Espacio para la futura imagen del certificado */
+
+.experience-certificate {
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 25px;
+}
+
+
+.experience-item-left .experience-certificate {
+    margin-left: auto;
+}
+
+.experience-certificate-link,
+.experience-institution-link {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+    height: auto;
+    max-width: 100%;
+
+    box-sizing: border-box;
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 0, 0, 0.55);
+    background: #050202;
+    text-decoration: none;
+    vertical-align: top;
+
+    transition:
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.experience-certificate-link {
+    width: fit-content;
+    max-width: 100%;
+}
+
+.experience-institution-link {
+    width: fit-content;
+    max-width: 100%;
+}
+/* IMAGEN */
+
+.experience-certificate-image,
+.experience-institution-link .experience-institution-logo {
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 250px;
+
+    object-fit: contain;
+
+    transition:
+        transform 0.45s ease,
+        filter 0.45s ease;
+}
+
+.experience-certificate-image {
+    width: 100%;
+    height: auto;
+}
+
+.experience-institution > .experience-institution-logo {
+    display: block;
+    width: auto;
+    height: 250px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* CAPA DE HOVER */
+
+.experience-certificate-overlay,
+.experience-institution-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 8px;
+    box-sizing: border-box;
+
+    background: rgba(5, 2, 2, 0.82);
+    color: #ffffff;
+
+    font-family: "Oxanium", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-align: center;
+
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+
+/* INTERACCIÓN */
+
+.experience-certificate-link:hover,
+.experience-institution-link:hover {
+    border-color: #ff0000;
+    box-shadow: 0 0 18px rgba(255, 0, 0, 0.22);
+}
+
+.experience-certificate-link:hover .experience-certificate-image,
+.experience-institution-link:hover .experience-institution-logo {
+    transform: scale(1.04);
+    filter: brightness(0.55);
+}
+
+.experience-certificate-link:hover .experience-certificate-overlay,
+.experience-institution-link:hover .experience-institution-overlay {
+    opacity: 1;
+}
+
+.certificate-icon,
+.institution-icon {
+    color: #ff0000;
+    font-size: 20px;
+}
+
+.experience-certificate-link:focus-visible,
+.experience-institution-link:focus-visible {
+    outline: 2px solid #ff0000;
+    outline-offset: 4px;
+}
+/* =========================================
+   HITO 005: CONTENIDO DEBAJO DEL REACTOR
+========================================= */
+
+.experience-item-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 25px;
+}
+
+/* Reactor arriba */
+.experience-item-bottom .experience-node {
+    align-self: center;
+    margin: 0;
+}
+
+/* Tarjeta debajo del reactor */
+.experience-card-bottom {
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* Título centrado */
+.experience-card-bottom .experience-card-title {
+    width: 100%;
+    text-align: center;
+}
+
+/* Subrayado centrado */
+.experience-card-bottom .experience-title-underline-center {
+    width: min(100%, 550px);
+    margin: 12px auto 20px;
+}
+
+/* Descripción centrada */
+.experience-card-bottom .experience-description {
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Escudo centrado */
+.experience-card-bottom .experience-institution {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+/* Ocultar la línea vertical en el Hito 005 */
+.experience-item-bottom::before,
+.experience-item-bottom::after {
+    display: none;
+}
+
+/* Evitar que la línea central atraviese el contenido */
+.experience-item-bottom .experience-node::before,
+.experience-item-bottom .experience-node::after {
+    display: none;
+}
+
+
+/* =========================================
+   HITO 005: OCULTAR EJE ROJO DETRÁS DEL CONTENIDO
+========================================= */
+
+.experience-timeline > .experience-item-bottom {
+    position: relative;
+    z-index: 1;
+    background-color: #050202;
+}
+
+.experience-card-bottom .experience-meta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin-inline: auto;
+}
+
+/* =========================================
+   REACTOR — DESCARGA DE ENERGÍA AL HACER CLIC
+========================================= */
+
+/* Pequeña respuesta al presionar */
+
+.experience-reactor-icon:active {
+    transform: scale(0.88);
+}
+
+/* Destello intenso del reactor */
+
+.experience-reactor.is-activated {
+    animation: experience-energy-burst 1.1s ease-out;
+}
+
+/* Luz intensa en el icono */
+
+.experience-reactor.is-activated .experience-reactor-icon {
+    animation: experience-icon-flash 1.1s ease-out;
+}
+
+/* Iluminación de los aros */
+
+.experience-reactor.is-activated .experience-ring-outer,
+.experience-reactor.is-activated .experience-ring-middle,
+.experience-reactor.is-activated .experience-ring-inner {
+    animation:
+        experience-ring-flash 1.1s ease-out,
+        experience-rotate 18s linear infinite;
+}
+
+/* Pulso energético del reactor */
+
+@keyframes experience-energy-burst {
+    0% {
+        box-shadow:
+            0 0 10px rgba(255, 0, 0, 0.4),
+            inset 0 0 14px rgba(255, 0, 0, 0.2);
+    }
+
+    20% {
+        box-shadow:
+            0 0 25px #ff0000,
+            0 0 55px rgba(255, 0, 0, 0.95),
+            0 0 90px rgba(255, 0, 0, 0.65),
+            inset 0 0 30px rgba(255, 0, 0, 0.9);
+    }
+
+    45% {
+        box-shadow:
+            0 0 18px #ff0000,
+            0 0 40px rgba(255, 0, 0, 0.7),
+            inset 0 0 20px rgba(255, 0, 0, 0.6);
+    }
+
+    100% {
+        box-shadow:
+            0 0 10px rgba(255, 0, 0, 0.4),
+            inset 0 0 14px rgba(255, 0, 0, 0.2);
+    }
+}
+
+/* Destello blanco-rojo del icono */
+
+@keyframes experience-icon-flash {
+    0%, 100% {
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.45));
+    }
+
+    20% {
+        filter:
+            drop-shadow(0 0 8px #ffffff)
+            drop-shadow(0 0 18px #ff0000)
+            drop-shadow(0 0 30px #ff0000);
+    }
+
+    45% {
+        filter:
+            drop-shadow(0 0 5px #ffffff)
+            drop-shadow(0 0 15px #ff0000);
+    }
+}
+
+/* Descarga de energía en los aros */
+
+@keyframes experience-ring-flash {
+    0%, 100% {
+        filter: brightness(1);
+    }
+
+    20% {
+        filter: brightness(2.5);
+    }
+
+    45% {
+        filter: brightness(1.8);
+    }
+}
+
+
+/* =========================================
+   HITOS A LA DERECHA
+========================================= */
+
+.experience-item-right .experience-node {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.experience-item-right .experience-card {
+    grid-column: 3;
+    grid-row: 1;
+
+    padding: 5px 0 40px 25px;
+    text-align: left;
+}
+
+.experience-item-right .experience-meta {
+    justify-content: flex-start;
+}
+
+.experience-item-right .experience-description {
+    margin-left: 0;
+}
+
+/* Degradado alineado a la izquierda */
+
+.experience-item-right .experience-title-underline {
+    margin: 12px auto 20px 0;
+}
+
+
+/* =========================================
+   EXPERIENCIA — ESCRITORIO
+   1200px EN ADELANTE
+========================================= */
+
+@media (min-width: 1200px) {
+
+    .experience {
+        min-height: 100svh;
+        box-sizing: border-box;
+
+        padding: 280px clamp(40px, 8vw, 120px) 80px;
+
+        display: block;
+
+        background: #050202;
+        color: #ffffff;
+        overflow: hidden;
+        --experience-image-height: 250px;
+    }
+
+    .experience-content {
+        width: 100%;
+        max-width: 1500px;
+        margin: 0 auto;
+    }
+
+    /* Encabezado original alineado a la izquierda */
+
+    .experience-heading {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 auto 65px;
+
+        text-align: left;
+    }
+
+    .experience-label {
+        padding-left: 15px;
+        margin-bottom: clamp(20px, 2vw, 28px);
+
+        font-size: clamp(12px, 0.9vw, 14px);
+        letter-spacing: 2px;
+    }
+
+    .experience-label::before {
+        top: 0;
+        left: 0;
+        bottom: auto;
+
+        width: 3px;
+        height: 100%;
+
+        transform: none;
+    }
+
+    .experience-title {
+        align-items: flex-start;
+        text-align: left;
+
+        gap: clamp(8px, 1vw, 12px);
+        margin-bottom: clamp(20px, 2vw, 28px);
+
+        font-size: clamp(32px, calc(32px + (100vw - 1200px) * 0.018), 52px);
+        line-height: 1.15;
+    }
+
+    /* Línea de tiempo central */
+
+    .experience-timeline::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Tres columnas: tarjeta, reactor, tarjeta */
+
+    .experience-item {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 100px minmax(0, 1fr);
+        align-items: start;
+        min-height: 300px;
+    }
+
+    .experience-node,
+    .experience-item-right .experience-node {
+        grid-column: 2;
+        grid-row: 1;
+        width: auto;
+        justify-content: center;
+    }
+
+    .experience-reactor {
+        width: 90px;
+    }
+
+    /* Hitos alternados */
+
+    .experience-card {
+        grid-column: 3;
+        grid-row: 1;
+        padding: 5px 0 40px 25px;
+        text-align: left;
+    }
+
+    .experience-item-left .experience-card {
+        grid-column: 1;
+        grid-row: 1;
+        padding: 5px 25px 40px 0;
+        text-align: right;
+    }
+
+    .experience-item-right .experience-card {
+        grid-column: 3;
+        grid-row: 1;
+        padding: 5px 0 40px 25px;
+        text-align: left;
+    }
+
+    .experience-item-left .experience-meta {
+        justify-content: flex-end;
+    }
+
+    .experience-item-right .experience-meta {
+        justify-content: flex-start;
+    }
+
+    /* Imágenes y certificados */
+
+    .experience-institution {
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .experience-institution > .experience-institution-logo {
+        width: auto;
+        height: 250px;
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+    .experience-certificate {
+        width: fit-content;
+        max-width: 100%;
+        margin-top: 25px;
+    }
+
+    .experience-item-left .experience-certificate {
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .experience-certificate-link,
+    .experience-institution-link {
+        width: fit-content;
+        max-width: 100%;
+    }
+
+    .experience-certificate-image,
+    .experience-institution-link .experience-institution-logo {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 250px;
+        object-fit: contain;
+    }
+
+    .experience-certificate-link .experience-certificate-image {
+        width: auto;
+    }
+
+    /* Hito 005: centrado debajo del reactor */
+
+    .experience-item-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .experience-item-bottom .experience-node {
+        align-self: center;
+        margin: 0;
+    }
+
+    .experience-card-bottom {
+        width: 100%;
+        max-width: 600px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+    }
+
+    .experience-card-bottom .experience-card-title,
+    .experience-card-bottom .experience-description {
+        width: 100%;
+        text-align: center;
+    }
+
+    .experience-card-bottom .experience-title-underline-center {
+        width: min(100%, 550px);
+        margin: 12px auto 20px;
+    }
+
+    .experience-card-bottom .experience-institution {
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .experience-card-bottom .experience-meta {
+        justify-content: center;
+        text-align: center;
+        margin-inline: auto;
+    }
+}
+
+/* =========================================
+   EXPERIENCE — TABLETS Y PANTALLAS MEDIANAS
+   451px HASTA 1199px
+========================================= */
+
+
+@media (min-width: 451px) and (max-width: 1199px) {
+
+    /* =========================================
+       SECCIÓN PRINCIPAL
+    ========================================= */
+
+    .experience {
+        min-height: 100svh;
+        box-sizing: border-box;
+        padding: 110px clamp(20px, 4vw, 45px) 90px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        --experience-image-height: 220px;
+    }
+
+    .experience-content {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    /* =========================================
+       ENCABEZADO
+    ========================================= */
+
+    .experience-heading {
+        margin-bottom: 45px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .experience-label {
+        padding-left: 0;
+        margin-bottom: clamp(22px, 3vw, 28px);
+        font-size: clamp(12px, 1.2vw, 14px);
+    }
+
+    .experience-label::before {
+        top: auto;
+        left: 50%;
+        bottom: -9px;
+
+        width: 35px;
+        height: 2px;
+
+        transform: translateX(-50%);
+    }
+
+    .experience-title {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        gap: clamp(8px, 1.2vw, 12px);
+        margin-bottom: clamp(10px, 1.5vw, 35px);
+
+        font-size: clamp(34px, 4vw, 48px);
+        line-height: 1.2;
+    }
+
+    /* =========================================
+       LÍNEA DE TIEMPO
+    ========================================= */
+
+    .experience-timeline {
+        gap: 50px;
+    }
+
+    .experience-timeline::before {
+        left: 21px;
+        transform: none;
+        width: 2px;
+    }
+
+    /* =========================================
+       HITOS: REACTOR + CONTENIDO
+    ========================================= */
+
+    .experience-item {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr);
+        column-gap: clamp(20px, 4vw, 35px);
+        align-items: start;
+
+        min-height: 0;
+    }
+
+    /* =========================================
+       REACTORES
+    ========================================= */
+
+    .experience-node,
+    .experience-item-right .experience-node {
+        grid-column: 1;
+        grid-row: 1;
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+
+        width: 44px;
+    }
+
+    .experience-reactor {
+        width: 44px;
+        border-width: 1.5px;
+    }
+
+    .experience-ring-outer {
+        inset: -8px;
+        border-width: 1.5px;
+    }
+
+    .experience-ring-middle {
+        inset: -3px;
+        border-width: 3px;
+    }
+
+    .experience-ring-inner {
+        inset: 6px;
+        border-width: 1.5px;
+    }
+
+    .experience-reactor-icon {
+        width: 25px;
+    }
+
+    /* =========================================
+       TODAS LAS TARJETAS A LA DERECHA
+    ========================================= */
+
+    .experience-card,
+    .experience-item-left .experience-card,
+    .experience-item-right .experience-card {
+        grid-column: 2;
+        grid-row: 1;
+
+        width: 100%;
+        min-width: 0;
+
+        padding: 3px 0 20px;
+        text-align: left;
+    }
+
+    /* =========================================
+       METADATOS
+    ========================================= */
+
+    .experience-meta,
+    .experience-item-left .experience-meta,
+    .experience-item-right .experience-meta {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 8px;
+
+        margin-bottom: 15px;
+
+        font-size: 10px;
+        line-height: 1.6;
+        letter-spacing: 0.8px;
+    }
+
+    /* =========================================
+       TÍTULOS DE LOS HITOS
+    ========================================= */
+
+    .experience-card-title {
+        font-size: clamp(17px, 2vw, 22px);
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    /* =========================================
+       SUBRAYADOS
+    ========================================= */
+
+    .experience-title-underline,
+    .experience-title-underline-reverse {
+        width: 100%;
+        max-width: 550px;
+        height: 4px;
+
+        margin: 11px 0 18px;
+    }
+
+    .experience-item-left .experience-title-underline-reverse {
+        margin-left: 0;
+        margin-right: auto;
+
+        background: linear-gradient(
+            90deg,
+            #ff0000 0%,
+            rgba(255, 0, 0, 0.65) 65%,
+            transparent 100%
+        );
+    }
+
+    /* =========================================
+       DESCRIPCIONES
+    ========================================= */
+
+    .experience-description,
+    .experience-item-left .experience-description,
+    .experience-item-right .experience-description {
+        width: 100%;
+        max-width: 600px;
+
+        margin: 0 0 20px;
+
+        font-size: 12px;
+        line-height: 1.9;
+        overflow-wrap: anywhere;
+    }
+
+    /* =========================================
+       IMÁGENES DE INSTITUCIONES Y ESCUDOS
+       TODAS ALINEADAS A LA IZQUIERDA
+    ========================================= */
+
+    .experience-institution {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        gap: 20px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .experience-institution > .experience-institution-logo {
+        display: block;
+
+        width: auto;
+        height: auto;
+
+        max-width: 100%;
+        max-height: 220px;
+
+        margin-left: 0;
+        margin-right: auto;
+
+        object-fit: contain;
+        object-position: left center;
+    }
+
+    /* =========================================
+       CERTIFICADOS E IMÁGENES CON ENLACE
+       EL MARCO SE AJUSTA A LA IMAGEN
+    ========================================= */
+
+    .experience-certificate {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        width: 100%;
+        max-width: 380px;
+
+        margin: 22px 0 0;
+        text-align: left;
+    }
+
+    .experience-certificate-link,
+    .experience-institution-link {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        width: fit-content;
+        height: fit-content;
+        max-width: 100%;
+
+        margin-left: 0;
+        margin-right: auto;
+
+        box-sizing: border-box;
+    }
+
+    /* La imagen define el tamaño del marco */
+
+    .experience-certificate-image,
+    .experience-institution-link .experience-institution-logo {
+        display: block;
+
+        width: auto;
+        height: auto;
+
+        max-width: 100%;
+        max-height: 220px;
+
+        margin: 0;
+
+        object-fit: contain;
+        object-position: left center;
+    }
+
+    /* Evita que el certificado se estire al ancho del contenedor */
+
+    .experience-certificate-link .experience-certificate-image {
+        width: auto;
+        height: auto;
+
+        max-width: 100%;
+        max-height: 220px;
+    }
+
+    /* =========================================
+       CAPAS DE HOVER
+    ========================================= */
+
+    .experience-certificate-overlay,
+    .experience-institution-overlay {
+        gap: 8px;
+        padding: 8px;
+
+        box-sizing: border-box;
+
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    .certificate-icon,
+    .institution-icon {
+        font-size: 18px;
+    }
+
+    /* =========================================
+       HITO 005
+    ========================================= */
+
+    .experience-item-bottom {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr);
+        column-gap: clamp(20px, 4vw, 35px);
+        row-gap: 0;
+
+        align-items: start;
+        text-align: left;
+    }
+
+    .experience-item-bottom .experience-node {
+        grid-column: 1;
+        grid-row: 1;
+
+        justify-self: center;
+        align-self: start;
+
+        margin: 0;
+    }
+
+    .experience-card-bottom {
+        grid-column: 2;
+        grid-row: 1;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        width: 100%;
+        max-width: 100%;
+
+        text-align: left;
+    }
+
+    .experience-card-bottom .experience-meta {
+        width: 100%;
+        justify-content: flex-start;
+        text-align: left;
+        margin-inline: 0;
+    }
+
+    .experience-card-bottom .experience-card-title {
+        width: 100%;
+        text-align: left;
+    }
+
+    .experience-card-bottom .experience-title-underline-center {
+        width: 100%;
+        max-width: 550px;
+
+        margin: 11px 0 18px;
+    }
+
+    .experience-card-bottom .experience-description {
+        width: 100%;
+        max-width: 600px;
+
+        margin: 0 0 20px;
+
+        text-align: left;
+    }
+
+    /* Imagen del Hito 005 también a la izquierda */
+
+    .experience-card-bottom .experience-institution {
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        margin-top: 15px;
+    }
+
+    .experience-card-bottom .experience-institution > .experience-institution-logo,
+    .experience-card-bottom .experience-institution-link {
+        margin-left: 0;
+        margin-right: auto;
+    }
+    
+    /* CORRECCIÓN: CERTIFICADOS DE LOS HITOS 002 Y 004 */
+
+    .experience-item .experience-certificate {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        width: 100%;
+        max-width: 380px;
+
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .experience-item .experience-certificate-link {
+        display: flex;
+        flex: 0 1 auto;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        width: fit-content;
+        max-width: 100%;
+
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .experience-item .experience-certificate-link .experience-certificate-image {
+        display: block;
+
+        width: auto;
+        height: auto;
+
+        max-width: 100%;
+        max-height: 220px;
+
+        margin: 0;
+
+        object-fit: contain;
+        object-position: left center;
+    }
+
+    .experience-item .experience-institution > .experience-institution-logo,
+    .experience-item .experience-institution-link .experience-institution-logo {
+        height: 180px;
+        max-height: 180px;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+    }
+}
+
+
+/* =========================================
+   EXPERIENCE — MÓVILES
+   PANTALLAS DE HASTA 450px
+========================================= */
+
+@media (max-width: 450px) {
+
+    /* SECCIÓN PRINCIPAL */
+
+    .experience {
+        min-height: 100svh;
+        box-sizing: border-box;
+
+        padding: 100px 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        --experience-image-height: 220px;
+    }
+
+    .experience-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* ENCABEZADO */
+
+    .experience-heading {
+        margin-bottom: 35px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .experience-label {
+        margin-bottom: 22px;
+        padding-left: 0;
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .experience-label::before {
+        top: auto;
+        left: 50%;
+        bottom: -9px;
+
+        width: 35px;
+        height: 2px;
+
+        transform: translateX(-50%);
+    }
+
+    .experience-title {
+        justify-content: center;
+        align-items: center;
+        gap: 7px;
+
+        margin-bottom: 5px;
+
+        font-size: clamp(23px, 6.5vw, 29px);
+        line-height: 1.25;
+        letter-spacing: 0;
+    }
+
+    /* LÍNEA DE TIEMPO */
+
+    .experience-timeline {
+        gap: 45px;
+    }
+
+    .experience-timeline::before {
+        left: 21px;
+        transform: none;
+        width: 2px;
+    }
+
+    /* CADA HITO PASA A UNA SOLA COLUMNA */
+
+    .experience-item {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr);
+        column-gap: 15px;
+        align-items: start;
+        min-height: 0;
+    }
+
+    /* REACTOR A LA IZQUIERDA */
+
+    .experience-node,
+    .experience-item-right .experience-node {
+        grid-column: 1;
+        grid-row: 1;
+        justify-content: center;
+        align-items: flex-start;
+        width: 44px;
+    }
+
+    .experience-reactor {
+        width: 42px;
+        border-width: 1.5px;
+    }
+
+    .experience-ring-outer {
+        inset: -7px;
+        border-width: 1px;
+    }
+
+    .experience-ring-middle {
+        inset: -3px;
+        border-width: 2px;
+    }
+
+    .experience-ring-inner {
+        inset: 5px;
+        border-width: 1px;
+    }
+
+    .experience-reactor-icon {
+        width: 23px;
+    }
+
+    /* TARJETAS: TODOS LOS HITOS A LA DERECHA */
+
+    .experience-card,
+    .experience-item-left .experience-card,
+    .experience-item-right .experience-card {
+        grid-column: 2;
+        grid-row: 1;
+        min-width: 0;
+        width: 100%;
+        padding: 3px 0 0;
+        text-align: left;
+    }
+
+    /* METADATOS */
+
+    .experience-meta,
+    .experience-item-left .experience-meta,
+    .experience-item-right .experience-meta {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 6px;
+        margin-bottom: 12px;
+        font-size: 9px;
+        line-height: 1.6;
+        letter-spacing: 0.5px;
+    }
+
+    /* TÍTULOS */
+
+    .experience-card-title {
+        font-size: clamp(15px, 4.2vw, 19px);
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    /* SUBRAYADOS */
+
+    .experience-title-underline,
+    .experience-title-underline-reverse {
+        width: 100%;
+        max-width: 100%;
+        height: 3px;
+        margin: 10px 0 15px;
+    }
+
+    .experience-item-left .experience-title-underline-reverse {
+        margin-left: 0;
+        margin-right: auto;
+        background: linear-gradient(
+            90deg,
+            #ff0000 0%,
+            rgba(255, 0, 0, 0.65) 65%,
+            transparent 100%
+        );
+    }
+
+    /* DESCRIPCIONES */
+
+    .experience-description,
+    .experience-item-left .experience-description,
+    .experience-item-right .experience-description {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        font-size: 12px;
+        line-height: 1.8;
+        letter-spacing: 0.3px;
+        overflow-wrap: anywhere;
+    }
+
+    /* INSTITUCIONES Y ESCUDOS */
+
+    .experience-institution {
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .experience-institution > .experience-institution-logo {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 150px;
+        object-fit: contain;
+    }
+        /* CERTIFICADOS E IMÁGENES CON ENLACE */
+
+    .experience-certificate {
+        width: 100%;
+        max-width: 350px;
+        margin: 18px auto 0;
+    }
+
+    .experience-certificate-link,
+    .experience-institution-link {
+        display: flex;
+        justify-content: center;
+        margin-inline: auto;
+    }
+
+    .experience-certificate-image,
+    .experience-institution-link .experience-institution-logo {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 180px;
+        object-fit: contain;
+    }
+
+    .experience-certificate-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .experience-certificate-overlay,
+    .experience-institution-overlay {
+        gap: 6px;
+        padding: 5px;
+        box-sizing: border-box;
+        font-size: 10px;
+        letter-spacing: 0.8px;
+        text-align: center;
+    }
+
+    .certificate-icon,
+    .institution-icon {
+        font-size: 16px;
+    }
+
+    /* HITO 005: REACTOR Y CONTENIDO CENTRADOS */
+
+    .experience-item-bottom {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr);
+        column-gap: 15px;
+        row-gap: 0;
+        align-items: start;
+        text-align: left;
+    }
+
+    .experience-item-bottom .experience-node {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: center;
+        align-self: start;
+        margin: 0;
+    }
+
+    .experience-card-bottom {
+        grid-column: 2;
+        grid-row: 1;
+        width: 100%;
+        max-width: 100%;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .experience-card-bottom .experience-meta {
+        width: 100%;
+        justify-content: flex-start;
+        text-align: left;
+        margin-inline: 0;
+    }
+
+    .experience-card-bottom .experience-card-title {
+        text-align: left;
+    }
+
+    .experience-card-bottom .experience-title-underline-center {
+        width: 100%;
+        margin: 10px 0 15px;
+    }
+
+    .experience-card-bottom .experience-description {
+        width: 100%;
+        text-align: left;
+        margin: 0 0 18px;
+    }
+
+    .experience-card-bottom .experience-institution {
+        justify-content: flex-start;
+        margin-top: 12px;
+    }
+}

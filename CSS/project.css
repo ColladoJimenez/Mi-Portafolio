@@ -1,0 +1,1401 @@
+.projects {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding:
+        160px
+        clamp(40px, 8vw, 120px)
+        80px;
+
+    background: #050202;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.projects-content {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   ENCABEZADO
+========================================= */
+
+.projects-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto 65px;
+
+    text-align: left;
+}
+
+/* ETIQUETA: PROYECTOS */
+
+.projects-label {
+    position: relative;
+    display: block;
+
+    margin-bottom: 24px;
+    padding-left: 15px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    color: #ff0000;
+}
+
+.projects-label::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: #ff0000;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+}
+
+/* TÍTULO */
+
+.projects-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    gap: 10px;
+    margin: 0 0 18px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+}
+
+.projects-title-white {
+    color: #ffffff;
+}
+
+.projects-title-red {
+    color: #ff0000;
+    text-shadow: 0 0 14px rgba(255, 0, 0, 0.2);
+}
+
+/* DESCRIPCIÓN */
+
+.projects-description {
+    max-width: 600px;
+    margin: 0;
+
+    font-family: "Oxanium", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.9;
+    letter-spacing: 0.4px;
+
+    color: #ffffff;
+}
+
+/* =========================================
+   CUADRÍCULA: 2 COLUMNAS × 2 FILAS
+========================================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+    width: 100%;
+}
+
+/* =========================================
+   TARJETA FUTURISTA
+========================================= */
+
+
+.project-card {
+    position: relative;
+    isolation: isolate;
+
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: stretch;
+
+    gap: clamp(14px, 1.5vw, 22px);
+
+    min-width: 0;
+    min-height: 250px;
+    box-sizing: border-box;
+    padding: 35px;
+
+    /* El borde exterior es rojo */
+    background: #ff0000;
+    border: none;
+
+    clip-path: polygon(
+        32px 0,
+        calc(100% - 32px) 0,
+        100% 32px,
+        100% calc(100% - 32px),
+        calc(100% - 32px) 100%,
+        32px 100%,
+        0 calc(100% - 32px),
+        0 32px
+    );
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        filter 0.35s ease;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+/* CAPA INTERIOR NEGRA */
+.project-card::after {
+    content: "";
+    position: absolute;
+    inset: 1.5px;
+    z-index: -1;
+
+    background: #050202;
+
+    clip-path: polygon(
+        31px 0,
+        calc(100% - 31px) 0,
+        100% 31px,
+        100% calc(100% - 31px),
+        calc(100% - 31px) 100%,
+        31px 100%,
+        0 calc(100% - 31px),
+        0 31px
+    );
+
+    pointer-events: none;
+}
+
+/* FONDO DECORATIVO */
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    z-index: -1;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 0, 0, 0.07),
+        transparent 35%,
+        transparent 70%,
+        rgba(255, 0, 0, 0.04)
+    );
+
+    pointer-events: none;
+}
+
+/* =========================================
+   CORCHETE SVG: ESQUINA SUPERIOR IZQUIERDA
+========================================= */
+
+.project-corner {
+    position: absolute;
+    z-index: 10;
+
+    display: block;
+    width: 103px;
+    height: 70px;
+
+    pointer-events: none;
+    user-select: none;
+    transition: transform 0.35s ease;
+}
+
+/* SUPERIOR IZQUIERDA */
+.project-corner-si {
+    top: 0;
+    left: 0;
+}
+
+/* SUPERIOR DERECHA */
+.project-corner-sd {
+    top: 0;
+    right: 0;
+}
+
+/* INFERIOR IZQUIERDA */
+.project-corner-ii {
+    bottom: 0;
+    left: 0;
+}
+
+/* INFERIOR DERECHA */
+.project-corner-id {
+    bottom: 0;
+    right: 0;
+}
+
+
+
+/* =========================================
+   DECORACIONES SVG CENTRALES DEL CARD
+========================================= */
+
+.project-border-decoration {
+    position: absolute;
+    left: 50%;
+    z-index: 5;
+
+    display: block;
+    width: 120px;
+    height: auto;
+
+    transform: translateX(-50%);
+
+    pointer-events: none;
+    user-select: none;
+}
+
+/* CENTRO SUPERIOR */
+.project-border-top {
+    top: 0;
+}
+
+/* CENTRO INFERIOR */
+.project-border-bottom {
+    bottom: 0;
+}
+
+/* =========================================
+   IMAGEN IZQUIERDA
+========================================= */
+
+.project-image-frame {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+    box-sizing: border-box;
+
+    border: 1px solid #ff0000;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 65%,
+            rgba(100, 20, 20, 0.2),
+            transparent 65%
+        ),
+        linear-gradient(145deg, #1b1010, #080505);
+}
+
+/* IMAGEN DEL PROYECTO */
+
+.project-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    object-fit: contain;
+
+    transform: none;
+    filter: none;
+    transition: none;
+}
+
+
+/* ESQUINAS TÉCNICAS INTERIORES */
+
+.project-image-frame::before,
+.project-image-frame::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+
+    width: 12px;
+    height: 12px;
+
+    pointer-events: none;
+}
+
+/* SUPERIOR IZQUIERDA */
+
+.project-image-frame::before {
+    top: 10px;
+    left: 10px;
+
+    border-top: 1px solid #ff0000;
+    border-left: 1px solid #ff0000;
+}
+
+/* INFERIOR DERECHA */
+
+.project-image-frame::after {
+    right: 10px;
+    bottom: 10px;
+
+    border-right: 1px solid #ff0000;
+    border-bottom: 1px solid #ff0000;
+}
+/* TEXTO INFERIOR SOBRE LA IMAGEN */
+
+.project-image-caption {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 10px;
+    z-index: 3;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-family: "Oxanium", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+
+    color: #dedede;
+    text-shadow: 0 1px 5px #000000;
+}
+
+/* =========================================
+   INFORMACIÓN DERECHA
+========================================= */
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+    padding: 1px 0 0;
+}
+
+/* METADATOS SUPERIORES */
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    gap: 9px;
+    margin-bottom: 8px;
+
+    font-family: "Oxanium", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+
+    color: #d0d0d0;
+}
+
+/* CATEGORÍA ROJA */
+
+.project-category {
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-family: "Oxanium", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+
+    color: #ff0000;
+}
+
+/* TÍTULO DEL PROYECTO */
+
+.project-title {
+    margin: 0 0 8px;
+
+    font-family: "Orbitron", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0;
+
+    color: #ffffff;
+}
+
+/* PÁRRAFO */
+
+.project-description {
+    margin: 0 0 18px;
+    max-width: 100%;
+
+    font-family: "Oxanium", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.1px;
+
+    color: #e0e0e0;
+}
+
+/* =========================================
+   PIE DE TARJETA
+========================================= */
+
+.project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+
+    margin-top: auto;
+    padding-top: 12px;
+
+    border-top: 1px solid #ff0000;
+}
+
+.project-footer-category,
+.project-year {
+    font-family: "Oxanium", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.5;
+
+    color: #ffffff;
+}
+
+.project-footer-category {
+    min-width: 0;
+}
+
+.project-year {
+    flex-shrink: 0;
+    text-align: right;
+}
+
+/* =========================================
+   TABLETS Y PANTALLAS MEDIANAS
+========================================= */
+
+@media (min-width: 1200px) {
+
+    /* CONTENEDOR PRINCIPAL */
+    .projects {
+        min-height: 100svh;
+        box-sizing: border-box;
+
+        padding: 280px clamp(40px, 8vw, 120px) 80px;
+
+        display: block;
+
+        background: #050202;
+        color: #ffffff;
+        overflow: hidden;
+    }
+
+    .projects-content {
+        width: 100%;
+        max-width: 1500px;
+        margin: 0 auto;
+    }
+
+    /* ENCABEZADO */
+    .projects-heading {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 auto 65px;
+
+        text-align: left;
+    }
+
+    .projects-label {
+        padding-left: 15px;
+        margin-bottom: clamp(20px, 2vw, 28px);
+
+        font-size: clamp(12px, 0.9vw, 14px);
+        letter-spacing: 2px;
+    }
+
+    .projects-label::before {
+        top: 0;
+        left: 0;
+        bottom: auto;
+
+        width: 3px;
+        height: 100%;
+
+        transform: none;
+    }
+
+    .projects-title {
+        align-items: flex-start;
+        text-align: left;
+
+        gap: clamp(8px, 1vw, 12px);
+        margin-bottom: clamp(20px, 2vw, 28px);
+
+        font-size: clamp(32px, calc(32px + (100vw - 1200px) * 0.018), 52px);
+        line-height: 1.15;
+    }
+
+    .projects-title-white {
+        color: #ffffff;
+    }
+
+    .projects-title-red {
+        color: #ff0000;
+        text-shadow: 0 0 14px rgba(255, 0, 0, 0.2);
+    }
+
+    .projects-description {
+        width: 100%;
+        max-width: clamp(420px, 40vw, 550px);
+
+        margin: 0;
+
+        text-align: left;
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    /* CUADRÍCULA: 2 COLUMNAS × 2 FILAS */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 25px;
+        width: 100%;
+    }
+
+    /* TARJETA FUTURISTA */
+    .project-card {
+        position: relative;
+        isolation: isolate;
+
+        display: grid;
+        grid-template-columns:
+            minmax(0, 0.85fr)
+            minmax(0, 1.15fr);
+
+        align-items: stretch;
+        gap: clamp(14px, 1.5vw, 22px);
+
+        width: 100%;
+        min-width: 0;
+        min-height: 250px;
+        box-sizing: border-box;
+        padding: 35px;
+
+        background: #ff0000;
+        border: none;
+
+        clip-path: polygon(
+            32px 0,
+            calc(100% - 32px) 0,
+            100% 32px,
+            100% calc(100% - 32px),
+            calc(100% - 32px) 100%,
+            32px 100%,
+            0 calc(100% - 32px),
+            0 32px
+        );
+
+        transition:
+            transform 0.35s ease,
+            filter 0.35s ease;
+    }
+
+    .project-card:hover {
+        transform: scale(1.02);
+    }
+
+    /* CAPA INTERIOR NEGRA */
+    .project-card::after {
+        content: "";
+        position: absolute;
+        inset: 1.5px;
+        z-index: -1;
+
+        background: #050202;
+
+        clip-path: polygon(
+            31px 0,
+            calc(100% - 31px) 0,
+            100% 31px,
+            100% calc(100% - 31px),
+            calc(100% - 31px) 100%,
+            31px 100%,
+            0 calc(100% - 31px),
+            0 31px
+        );
+
+        pointer-events: none;
+    }
+
+    /* FONDO DECORATIVO */
+    .project-card::before {
+        content: "";
+        position: absolute;
+        inset: 2px;
+        z-index: -1;
+
+        background: linear-gradient(
+            135deg,
+            rgba(255, 0, 0, 0.07),
+            transparent 35%,
+            transparent 70%,
+            rgba(255, 0, 0, 0.04)
+        );
+
+        pointer-events: none;
+    }
+
+    /* DECORACIONES SVG DE LAS ESQUINAS */
+    .project-corner {
+        position: absolute;
+        z-index: 10;
+
+        display: block;
+        width: 103px;
+        height: 70px;
+
+        pointer-events: none;
+        user-select: none;
+        transition: transform 0.35s ease;
+    }
+
+    .project-corner-si {
+        top: 0;
+        left: 0;
+    }
+
+    .project-corner-sd {
+        top: 0;
+        right: 0;
+    }
+
+    .project-corner-ii {
+        bottom: 0;
+        left: 0;
+    }
+
+    .project-corner-id {
+        bottom: 0;
+        right: 0;
+    }
+
+    /* DECORACIONES SVG CENTRALES */
+    .project-border-decoration {
+        position: absolute;
+        left: 50%;
+        z-index: 5;
+
+        display: block;
+        width: 120px;
+        height: auto;
+
+        transform: translateX(-50%);
+
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .project-border-top {
+        top: 0;
+    }
+
+    .project-border-bottom {
+        bottom: 0;
+    }
+
+    /* MARCO DE IMAGEN */
+    .project-image-frame {
+        position: relative;
+        isolation: isolate;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        min-width: 0;
+        min-height: 0;
+
+        overflow: hidden;
+        box-sizing: border-box;
+
+        border: 1px solid #ff0000;
+
+        background:
+            radial-gradient(
+                ellipse at 50% 65%,
+                rgba(100, 20, 20, 0.2),
+                transparent 65%
+            ),
+            linear-gradient(145deg, #1b1010, #080505);
+    }
+
+    .project-image {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+
+        object-fit: contain;
+
+        transform: none;
+        filter: none;
+        transition: none;
+    }
+
+    /* ESQUINAS TÉCNICAS DEL MARCO */
+    .project-image-frame::before,
+    .project-image-frame::after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+
+        width: 12px;
+        height: 12px;
+
+        pointer-events: none;
+    }
+
+    .project-image-frame::before {
+        top: 10px;
+        left: 10px;
+
+        border-top: 1px solid #ff0000;
+        border-left: 1px solid #ff0000;
+    }
+
+    .project-image-frame::after {
+        right: 10px;
+        bottom: 10px;
+
+        border-right: 1px solid #ff0000;
+        border-bottom: 1px solid #ff0000;
+    }
+
+    /* TEXTO INFERIOR SOBRE LA IMAGEN */
+    .project-image-caption {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 10px;
+        z-index: 3;
+
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        font-size: 10px;
+        letter-spacing: 0.3px;
+
+        color: #dedede;
+        text-shadow: 0 1px 5px #000000;
+    }
+
+    /* INFORMACIÓN DEL PROYECTO */
+    .project-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        min-width: 0;
+        padding: 1px 0 0;
+    }
+
+    .project-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        gap: 9px;
+        margin-bottom: 8px;
+
+        font-size: 10px;
+        line-height: 1.5;
+        letter-spacing: 0.2px;
+
+        color: #d0d0d0;
+    }
+
+    .project-category {
+        display: block;
+        margin-bottom: 9px;
+
+        font-size: 10px;
+        line-height: 1.5;
+        letter-spacing: 0.2px;
+
+        color: #ff0000;
+    }
+
+    .project-title {
+        margin: 0 0 8px;
+
+        font-size: 25px;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: 0;
+
+        color: #ffffff;
+    }
+
+    .project-description {
+        display: block;
+
+        margin: 0 0 18px;
+        max-width: 100%;
+
+        font-size: 12px;
+        line-height: 1.5;
+        letter-spacing: 0.1px;
+
+        color: #e0e0e0;
+    }
+
+    /* PIE DE TARJETA */
+    .project-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 10px;
+        width: 100%;
+        box-sizing: border-box;
+
+        margin-top: auto;
+        padding-top: 12px;
+
+        border-top: 1px solid #ff0000;
+    }
+
+    .project-footer-category,
+    .project-year {
+        font-size: 10px;
+        line-height: 1.5;
+        color: #ffffff;
+    }
+
+    .project-footer-category {
+        min-width: 0;
+    }
+
+    .project-year {
+        flex-shrink: 0;
+        text-align: right;
+    }
+}
+
+
+@media (min-width: 451px) and (max-width: 1199px) {
+
+    /* CONTENEDOR PRINCIPAL */
+    .projects {
+        min-height: 100svh;
+        box-sizing: border-box;
+        padding: 110px clamp(20px, 4vw, 45px) 90px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .projects-content {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    /* ENCABEZADO */
+    .projects-heading {
+        margin-bottom: 45px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .projects-label {
+        padding-left: 0;
+        margin-bottom: clamp(22px, 3vw, 28px);
+
+        font-size: clamp(12px, 1.2vw, 14px);
+    }
+
+    .projects-label::before {
+        top: auto;
+        left: 50%;
+        bottom: -9px;
+
+        width: 35px;
+        height: 2px;
+
+        transform: translateX(-50%);
+    }
+
+    .projects-title {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        gap: clamp(8px, 1.2vw, 12px);
+        margin-bottom: clamp(10px, 1.5vw, 35px);
+
+        font-size: clamp(34px, 4vw, 48px);
+        line-height: 1.2;
+    }
+
+    .projects-description {
+        width: 100%;
+        max-width: clamp(360px, 65vw, 650px);
+
+        margin: 0 auto;
+
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    /* UNA SOLA COLUMNA */
+    .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+        width: 100%;
+    }
+
+    /* TARJETA */
+    .project-card {
+        grid-template-columns:
+            minmax(0, 0.8fr)
+            minmax(0, 1.2fr);
+
+        align-items: center;
+        gap: clamp(16px, 2.5vw, 28px);
+
+        width: 100%;
+        min-width: 0;
+        min-height: 0;
+
+        padding: clamp(25px, 3vw, 35px);
+
+        clip-path: polygon(
+            26px 0,
+            calc(100% - 26px) 0,
+            100% 26px,
+            100% calc(100% - 26px),
+            calc(100% - 26px) 100%,
+            26px 100%,
+            0 calc(100% - 26px),
+            0 26px
+        );
+    }
+
+    /* CAPA NEGRA INTERIOR */
+    .project-card::after {
+        inset: 1.5px;
+
+        clip-path: polygon(
+            25px 0,
+            calc(100% - 25px) 0,
+            100% 25px,
+            100% calc(100% - 25px),
+            calc(100% - 25px) 100%,
+            25px 100%,
+            0 calc(100% - 25px),
+            0 25px
+        );
+    }
+
+    /* DECORACIONES SVG DE LAS ESQUINAS */
+    .project-corner {
+        width: clamp(70px, 15vw, 85px);
+        height: auto;
+    }
+
+    /* DECORACIONES SVG CENTRALES */
+    .project-border-decoration {
+        width: clamp(65px, 15vw, 85px);
+        height: auto;
+    }
+
+    .project-border-top {
+        top: 0;
+    }
+
+    .project-border-bottom {
+        bottom: 0;
+    }
+
+    /* MARCO DE IMAGEN */
+    .project-image-frame {
+        width: 100%;
+        min-width: 0;
+        aspect-ratio: 1 / 1;
+        height: auto;
+        align-self: center;
+        overflow: hidden;
+    }
+
+    .project-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: clamp(5px, 1vw, 12px);
+        object-fit: contain;
+        transform: none;
+        filter: none;
+        transition: none;
+    }
+
+    /* OCULTAR TEXTO SOBRE LA IMAGEN */
+    .project-image-caption {
+        display: none;
+    }
+
+    /* ESQUINAS TÉCNICAS DEL MARCO */
+    .project-image-frame::before,
+    .project-image-frame::after {
+        width: 10px;
+        height: 10px;
+    }
+
+    .project-image-frame::before {
+        top: 7px;
+        left: 7px;
+    }
+
+    .project-image-frame::after {
+        right: 7px;
+        bottom: 7px;
+    }
+
+    /* INFORMACIÓN DEL PROYECTO */
+    .project-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: stretch;
+
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        padding: 1px 0 0;
+    }
+
+    .project-meta {
+        gap: 7px;
+        margin-bottom: 8px;
+        font-size: clamp(9px, 1vw, 10px);
+    }
+
+    .project-category {
+        margin-bottom: 9px;
+        font-size: clamp(9px, 1vw, 10px);
+    }
+
+    .project-title {
+        margin-bottom: 8px;
+        font-size: clamp(18px, 2.2vw, 25px);
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+    }
+
+    .project-description,
+    .project-info .project-description {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 12px;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+    }
+
+    /* PIE DE TARJETA */
+    .project-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+        gap: 8px;
+        margin-top: auto;
+        padding-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .project-footer-category,
+    .project-year {
+        font-size: clamp(9px, 1vw, 10px);
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    /* CONTENEDOR PRINCIPAL */
+    .projects {
+        min-height: 100svh;
+        box-sizing: border-box;
+
+        padding: 100px 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .projects-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* ENCABEZADO */
+    .projects-heading {
+        margin-bottom: 35px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .projects-label {
+        margin-bottom: 22px;
+        padding-left: 0;
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .projects-label::before {
+        top: auto;
+        left: 50%;
+        bottom: -9px;
+
+        width: 35px;
+        height: 2px;
+
+        transform: translateX(-50%);
+    }
+
+    .projects-title {
+        justify-content: center;
+        align-items: center;
+        gap: 7px;
+
+        margin-bottom: 5px;
+
+        font-size: clamp(23px, 6.5vw, 29px);
+        line-height: 1.25;
+        letter-spacing: 0;
+    }
+
+    .projects-description {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+
+        font-size: 12px;
+        line-height: 1.8;
+        letter-spacing: 0.3px;
+        text-align: center;
+    }
+
+    /* UNA SOLA COLUMNA */
+    .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+        width: 100%;
+    }
+
+    /* TARJETA */
+    .project-card {
+        grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+        min-height: 0;
+        padding: 25px 16px;
+
+        /* Mantener las esquinas angulares */
+        clip-path: polygon(
+            20px 0,
+            calc(100% - 20px) 0,
+            100% 20px,
+            100% calc(100% - 20px),
+            calc(100% - 20px) 100%,
+            20px 100%,
+            0 calc(100% - 20px),
+            0 20px
+        );
+    }
+
+    .project-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: stretch;
+        height: 100%;
+        min-width: 0;
+    }
+
+    /* OCULTAR LA DESCRIPCIÓN EN MÓVIL */
+    .project-description {
+        display: none;
+    }
+
+    /* EL PIE SIEMPRE ABAJO */
+    .project-footer {
+        width: 100%;
+        margin-top: auto;
+        padding-top: 8px;
+    }
+
+    .project-description,
+    .project-image-caption {
+        display: none;
+    }
+
+    /* CAPA NEGRA INTERIOR */
+    .project-card::after {
+        inset: 1.5px;
+        clip-path: polygon(
+            19px 0,
+            calc(100% - 19px) 0,
+            100% 19px,
+            100% calc(100% - 19px),
+            calc(100% - 19px) 100%,
+            19px 100%,
+            0 calc(100% - 19px),
+            0 19px
+        );
+    }
+
+    /* DECORACIONES SVG DE LAS ESQUINAS */
+    .project-corner {
+        width: clamp(60px, 15vw, 75px);
+        height: auto;
+    }
+
+    /* DECORACIONES SVG CENTRALES */
+    .project-border-decoration {
+        width: clamp(45px, 15vw, 65px);
+        height: auto;
+    }
+
+    .project-border-top {
+        top: 0;
+    }
+
+    .project-border-bottom {
+        bottom: 0;
+    }
+
+    /* MARCO DE LA IMAGEN */
+    .project-image-frame {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        height: auto;
+        align-self: start;
+        overflow: hidden;
+    }
+
+    .project-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* TEXTO SOBRE LA IMAGEN */
+    .project-image-caption {
+        left: 5px;
+        right: 5px;
+        bottom: 6px;
+        font-size: 8px;
+    }
+
+    /* ESQUINAS TÉCNICAS DEL MARCO */
+    .project-image-frame::before,
+    .project-image-frame::after {
+        width: 8px;
+        height: 8px;
+    }
+
+    .project-image-frame::before {
+        top: 5px;
+        left: 5px;
+    }
+
+    .project-image-frame::after {
+        right: 5px;
+        bottom: 5px;
+    }
+
+    /* INFORMACIÓN DEL PROYECTO */
+    .project-info {
+        min-width: 0;
+    }
+
+    .project-meta {
+        gap: 5px;
+        margin-bottom: 6px;
+        font-size: 8px;
+    }
+
+    .project-category {
+        margin-bottom: 7px;
+        font-size: 9px;
+    }
+
+    .project-title {
+        margin-bottom: 7px;
+        font-size: clamp(14px, 4vw, 18px);
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+    }
+
+    .project-description {
+        margin-bottom: 12px;
+        font-size: 10px;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+    }
+
+    /* PIE DE TARJETA */
+    .project-footer {
+        flex-wrap: wrap;
+        gap: 5px;
+        padding-top: 8px;
+    }
+
+    .project-footer-category,
+    .project-year {
+        font-size: 8px;
+    }
+}
