@@ -349,7 +349,7 @@
         min-height: 100svh;
         box-sizing: border-box;
 
-        padding: 280px clamp(40px, 8vw, 120px) 80px;
+        padding: 15.5vw clamp(40px, 8vw, 120px) 10vw;
 
         display: block;
 

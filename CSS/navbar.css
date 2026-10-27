@@ -268,7 +268,7 @@
     .navbar > .logo img {
         display: block;
         width: clamp(120px, 12vw, 210px);
-        max-height: clamp(65px, 7vw, 125px);
+        max-height: clamp(65px, 6vw, 125px);
         object-fit: contain;
     }
 

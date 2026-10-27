@@ -514,3 +514,269 @@ document.querySelectorAll(".experience-reactor").forEach((reactor) => {
     });
 
 });
+
+
+/* =========================================
+   EXPERIENCIA — ANIMACIÓN DE ENTRADA GSAP
+========================================= */
+
+(() => {
+    if (typeof gsap === "undefined" ||
+        typeof ScrollTrigger === "undefined") {
+        return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const experienceSection = document.querySelector("#experiencia")
+        || document.querySelector(".experience");
+
+    if (!experienceSection) return;
+
+    // Respetar la preferencia de movimiento reducido.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+    }
+
+    const heading = experienceSection.querySelector(".experience-heading");
+    const label = experienceSection.querySelector(".experience-label");
+    const title = experienceSection.querySelector(".experience-title");
+    const timeline = experienceSection.querySelector(".experience-timeline");
+
+    const nodes = experienceSection.querySelectorAll(
+        ".experience-item:not(.experience-item-bottom) .experience-node"
+    );
+
+    const cards = experienceSection.querySelectorAll(
+        ".experience-item:not(.experience-item-bottom) .experience-card, " +
+        ".experience-item-bottom .experience-card-bottom"
+    );
+
+    const images = experienceSection.querySelectorAll(
+        ".experience-certificate, " +
+        ".experience-institution > .experience-institution-logo, " +
+        ".experience-institution-link"
+    );
+
+    // Evita ejecutar la animación si falta la estructura principal.
+    if (!heading || !timeline) return;
+
+    const entrance = gsap.timeline({
+        scrollTrigger: {
+            trigger: experienceSection,
+            start: "top 75%",
+            toggleActions: "play none none none",
+            once: true
+        }
+    });
+
+    // 1. Etiqueta: entrada sutil desde arriba.
+    if (label) {
+        entrance.fromTo(
+            label,
+            {
+                autoAlpha: 0,
+                y: 18
+            },
+            {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.55,
+                ease: "power2.out"
+            }
+        );
+    }
+
+    // 2. Título: aparece desde abajo.
+    if (title) {
+        entrance.fromTo(
+            title,
+            {
+                autoAlpha: 0,
+                y: 28
+            },
+            {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.7,
+                ease: "power3.out"
+            },
+            "-=0.25"
+        );
+    }
+
+    // 3. Reactores: activación progresiva.
+    if (nodes.length) {
+        entrance.fromTo(
+            nodes,
+            {
+                autoAlpha: 0,
+                scale: 0.7,
+                y: 18
+            },
+            {
+                autoAlpha: 1,
+                scale: 1,
+                y: 0,
+                duration: 0.65,
+                stagger: 0.16,
+                ease: "back.out(1.5)",
+                clearProps: "visibility"
+            },
+            "-=0.15"
+        );
+    }
+
+    // 4. Tarjetas: aparecen una tras otra.
+    if (cards.length) {
+        entrance.fromTo(
+            cards,
+            {
+                autoAlpha: 0,
+                y: 32
+            },
+            {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.7,
+                stagger: 0.18,
+                ease: "power3.out",
+                clearProps: "visibility"
+            },
+            "-=0.35"
+        );
+    }
+
+    // 5. Certificados y escudos: entrada suave.
+    if (images.length) {
+        entrance.fromTo(
+            images,
+            {
+                autoAlpha: 0,
+                y: 20,
+                scale: 0.96
+            },
+            {
+                autoAlpha: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.55,
+                stagger: 0.1,
+                ease: "power2.out",
+                clearProps: "visibility"
+            },
+            "-=0.3"
+        );
+    }
+
+})();
+
+
+/* =========================================
+   CONTACTO — ANIMACIÓN GSAP
+========================================= */
+
+if (
+    typeof gsap !== "undefined" &&
+    typeof ScrollTrigger !== "undefined"
+) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const contactSection = document.querySelector("#contacto");
+
+    if (
+        contactSection &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+        const contactInfo = contactSection.querySelector(".contact-info");
+        const contactVisual = contactSection.querySelector(".contact-visual");
+
+        const contactLabel = contactSection.querySelector(".contact-label");
+        const contactTitle = contactSection.querySelector(".contact-title");
+        const contactDescription = contactSection.querySelector(".contact-description");
+        const contactLinks = contactSection.querySelectorAll(".contact-link");
+        const contactMessage = contactSection.querySelector(".contact-message");
+
+        const contactButton = contactSection.querySelector(
+            ".contact-buttonF, .contact-button"
+        );
+
+        const contactTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: contactSection,
+                start: "top 75%",
+                toggleActions: "play none none none",
+                once: true
+            },
+            defaults: {
+                ease: "power3.out"
+            }
+        });
+
+        // COLUMNA IZQUIERDA: ENTRADA PROGRESIVA
+
+        if (contactInfo) {
+            contactTimeline
+                .from(contactLabel, {
+                    y: 20,
+                    autoAlpha: 0,
+                    duration: 0.5
+                }, 0)
+
+                .from(contactTitle, {
+                    y: 30,
+                    autoAlpha: 0,
+                    duration: 0.7
+                }, 0.12)
+
+                .from(contactDescription, {
+                    y: 20,
+                    autoAlpha: 0,
+                    duration: 0.6
+                }, 0.28)
+
+                .from(contactLinks, {
+                    y: 24,
+                    autoAlpha: 0,
+                    duration: 0.55,
+                    stagger: 0.15
+                }, 0.42)
+
+                .from(contactMessage, {
+                    y: 18,
+                    autoAlpha: 0,
+                    duration: 0.5
+                }, ">-0.15");
+
+            // BOTÓN FINAL
+
+            if (contactButton) {
+                contactTimeline.from(contactButton, {
+                    y: 18,
+                    autoAlpha: 0,
+                    duration: 0.5
+                }, ">-0.1");
+            }
+        }
+
+        // COLUMNA DERECHA: LOGO
+
+        if (contactVisual) {
+            contactTimeline.from(contactVisual, {
+                x: 45,
+                autoAlpha: 0,
+                scale: 0.96,
+                duration: 0.9,
+                ease: "power2.out"
+            }, 0.25);
+        }
+    }
+}
+
+
+const currentYear = document.getElementById("current-year");
+
+if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
+}
+

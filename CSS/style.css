@@ -5,6 +5,7 @@
 @import url("./skills.css");
 @import url("./project.css");
 @import url("./experience.css");
+@import url("./contact.css");
 
 /* =========================================
    CONTROL DEL OVERSCROLL EN MÓVILES
@@ -19,4 +20,37 @@ body {
     min-height: 100%;
     background-color: #050202;
     overscroll-behavior-y: none;
+}
+
+
+/* =========================================
+   PIE DE PÁGINA
+========================================= */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 55px;
+    box-sizing: border-box;
+    padding: 12px 20px;
+
+    background: #ff0000;
+    color: #ffffff;
+
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+    font-family: "Oxanium", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.4px;
+}
+
+.back-to-top {
+    display: none !important;
 }
