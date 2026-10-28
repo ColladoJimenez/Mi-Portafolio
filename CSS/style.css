@@ -54,3 +54,12 @@ body {
 .back-to-top {
     display: none !important;
 }
+
+.project-card-link,
+.project-card-link:link,
+.project-card-link:visited,
+.project-card-link:hover,
+.project-card-link:active {
+    color: inherit;
+    text-decoration: none;
+}
