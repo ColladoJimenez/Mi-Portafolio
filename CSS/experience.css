@@ -620,11 +620,84 @@
     margin-inline: auto;
 }
 
+
+/* =========================================
+   MARCO TECNOLÓGICO PARA LAS IMÁGENES
+========================================= */
+
+.experience-image-frame {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+/* Corchete superior izquierdo */
+.experience-image-frame::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 88px;
+    height: 60px;
+
+    background: url("../Assets/bordeSI.svg") no-repeat top left;
+    background-size: contain;
+
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Corchete inferior derecho */
+.experience-image-frame::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    width: 88px;
+    height: 60px;
+
+    background: url("../Assets/bordeID.svg") no-repeat bottom right;
+    background-size: contain;
+
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Evitar que los marcos rompan el diseño en pantallas pequeñas */
+.experience-image-frame img {
+    max-width: 100%;
+}
+
+/* =========================================
+   RECORTE DIAGONAL DE IMÁGENES ENLAZADAS
+   HITOS 002, 003 Y 004
+========================================= */
+
+.experience-item-left .experience-certificate-link,
+.experience-item-right .experience-institution-link,
+.experience-item-right .experience-certificate-link {
+    clip-path: polygon(
+        32.5px 0,
+        100% 0,
+        100% calc(100% - 32.5px),
+        calc(100% - 32.5px) 100%,
+        0 100%,
+        0 32.5px
+    );
+}
+
+
 /* =========================================
    REACTOR — DESCARGA DE ENERGÍA AL HACER CLIC
 ========================================= */
-
-/* Pequeña respuesta al presionar */
 
 .experience-reactor-icon:active {
     transform: scale(0.88);
@@ -752,6 +825,9 @@
     margin: 12px auto 20px 0;
 }
 
+.experience-item-right .experience-institution {
+    margin-top: 25px;
+}
 
 /* =========================================
    EXPERIENCIA — ESCRITORIO
@@ -890,12 +966,6 @@
         align-items: center;
     }
 
-    .experience-institution > .experience-institution-logo {
-        width: auto;
-        height: 250px;
-        max-width: 100%;
-        object-fit: contain;
-    }
 
     .experience-certificate {
         width: fit-content;
@@ -915,9 +985,10 @@
     }
 
     .experience-certificate-image,
-    .experience-institution-link .experience-institution-logo {
+    .experience-institution-link .experience-institution-logo,
+    .experience-institution > .experience-institution-logo {
         width: auto;
-        height: auto;
+        height: 250px;
         max-width: 100%;
         max-height: 250px;
         object-fit: contain;
